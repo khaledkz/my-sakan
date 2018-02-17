@@ -3,25 +3,26 @@ const mongoose = require('mongoose');
 const {Schema}=mongoose;
 
 const flat = new Schema({
-    title:String,
-    price:Number,
-    buyOrRent:String,
     country:String,
-    fullAddress:String,
-    lettingInformation:{
-        dataAvailable:String,
-        furnishing:String,
-        ReducedOnWebsite:String,
-        Deposiot:Number
-    },
-    fullDescription:String,
-    agencyDetails:{
-        img:String,
-        name:String,
-        phoneNumber:Number,
-        address:String
+    rentOrBut:String,
+    description:{
+                    address:{
+                        city:String,
+                        postCode:String,
+                        Street:String,
+                        flatNumber:String,
+                    },
+                    title:String,
+                    lettingInformation:{
+                        price:Number,
+                        dataAvailable:String,
+                        furnishing:String,
+                        lettingType:String,
+                        ReducedOnWebsite:String,
+                        Deposiot:Number
+                    },
+                    fullDescription:String
     }
-    
 })
 
 const Article= mongoose.model('flat',flat);
