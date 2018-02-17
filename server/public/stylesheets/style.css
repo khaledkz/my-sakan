@@ -1,3 +1,7 @@
+*{
+  padding: 0;
+  margin:0;
+}
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
  display: flex;
@@ -58,4 +62,57 @@ a {
   
 }
 /* Index css End */
+/* ************************************************************ */
+
+
+/* Flat Edit First Page css End */
+/* ************************************************************ */
+
+/* .flat-edit-first-page{
+
+}
+.flat-edit-first-page ul{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border:solid 1px red;
+}
+.flat-edit-first-page ul li{
+  list-style: none;
+  border:solid 1px gold;
+
+}
+.flat-edit-first-page ul a{
+  border:solid 1px blue;
+
+} */
+
+.flat-edit-first-page ul{
+   display: flex;
+  align-items: center;
+  height: 200px;
+  width:100%;
+  justify-content: space-around;
+  background:black;
+  border-radius: 10px;
+  width:95%;
+  margin: 2.5%;
+}
+.flat-edit-first-page ul li{
+  list-style: none;
+  font-size: 1.4em;
+  background: white;
+   padding:8px;
+  border-radius: 25px;
+}
+.flat-edit-first-page ul li:hover{
+  background-color: #00B7FF;
+  border-radius: 25px;
+  cursor: pointer;
+}
+.flat-edit-first-page ul a{
+  color:black;
+  text-decoration: none;
+}
+/* Flat Edit First Page css End */
 /* ************************************************************ */

@@ -43,4 +43,13 @@ router.post('/add',(req, res, next)=>{
 
     flatDB.createFlat(newQuery,cb)
 })
+
+router.get('/edit/to-rent',(req,res,next)=>{
+    res.render('flat-search-options',{page:'to-rent'})
+});
+
+router.get('/edit/for-sale',(req,res,next)=>{
+  res.render('flat-search-options',{page:'for-sale'})
+});
+
  module.exports = router;
