@@ -4,12 +4,12 @@ const {Schema}=mongoose;
 
 const flat = new Schema({
     country:String,
-    rentOrBut:String,
+    rentOrSale:String,
     description:{
                     address:{
                         city:String,
                         postCode:String,
-                        Street:String,
+                        street:String,
                         flatNumber:String,
                     },
                     title:String,
@@ -18,8 +18,8 @@ const flat = new Schema({
                         dataAvailable:String,
                         furnishing:String,
                         lettingType:String,
-                        ReducedOnWebsite:String,
-                        Deposiot:Number
+                        reducedOnWebsite:String,
+                        deposit:Number
                     },
                     fullDescription:String
     }
