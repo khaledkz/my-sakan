@@ -226,7 +226,4 @@ router.get('/edit/to-rent/flatrefnumber',(req,res,next)=>{
       res.render('search-flatrefnumber');
 })
 
-
-
-
  module.exports = router;
