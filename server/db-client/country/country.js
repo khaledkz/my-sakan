@@ -17,4 +17,8 @@ const findSingleCountry=(country,cb)=>{
 
 }
 
-module.exports={addCountry,findCounrty,findSingleCountry};
+const deleteSingleCountry=(country,cb)=>{
+    Country.remove({_id:ObjectId(country)}).then(cb);   
+}
+
+module.exports={addCountry,findCounrty,findSingleCountry,deleteSingleCountry};
