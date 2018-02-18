@@ -21,4 +21,8 @@ const deleteSingleCountry=(country,cb)=>{
     Country.remove({_id:ObjectId(country)}).then(cb);   
 }
 
-module.exports={addCountry,findCounrty,findSingleCountry,deleteSingleCountry};
+const updateSingleCountry=(country,query,cb)=>{
+    Country.updateOne({_id:ObjectId(country)},query,{upsert:true}).then(cb);
+}
+
+module.exports={addCountry,findCounrty,findSingleCountry,deleteSingleCountry,updateSingleCountry};

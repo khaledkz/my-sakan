@@ -19,7 +19,7 @@ router.get('/edit',(req,res,next)=>{
 });
 
 router.post('/add',(req,res,next)=>{
-
+    
     cb=()=>{
         res.redirect('/');
     }
@@ -40,7 +40,7 @@ router.get('/edit/:countryID',(req,res,next)=>{
     countryClient.findSingleCountry(countryID,cb);
  })
 
-router.get('/edit/:countryID/delete',(req,res,next)=>{
+ router.get('/edit/:countryID/delete',(req,res,next)=>{
     
     const {countryID}=req.params;
     const cb=()=>{
@@ -48,4 +48,52 @@ router.get('/edit/:countryID/delete',(req,res,next)=>{
     }
     countryClient.deleteSingleCountry(countryID,cb);
 });
+/** 
+router.get('/edit/:countryID/update',(req,res,next)=>{
+    
+    const {countryID}=req.params;
+    const cb=()=>{
+            res.redirect('/country/edit')
+    }
+    countryClient.updateSingleCountry(countryID,cb);
+});
+*/
+
+router.get('/edit/:countryID/update',(req,res,next)=>{
+    const {countryID}=req.params;
+
+    const  cb=(singleCountry)=>{
+        res.render('edit-single-country',{
+            singleCountry
+        })
+    }
+
+    countryClient.findSingleCountry(countryID,cb);
+});
+
+router.get('/edit/:countryID/update',(req,res,next)=>{
+    
+    const {countryID}=req.params;
+    const  cb=(singleCountry)=>{
+        res.render('edit-single-country',{
+            singleCountry
+        })
+    }
+
+    countryClient.findSingleCountry(countryID,cb);
+});
+ 
+
+router.post('/edit/:countryID/update',(req,res,next)=>{
+    console.log(req.body)
+    const {countryID}=req.params;
+
+    const cb=()=>{
+            res.redirect('/country/edit')
+    }
+
+    countryClient.updateSingleCountry(countryID,req.body,cb);
+});
+
+
 module.exports=router;
