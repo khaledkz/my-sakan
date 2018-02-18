@@ -1,9 +1,12 @@
 const mongoose = require('mongoose');
-
 const {Schema}=mongoose;
+const Contrey = require('./Country');
 
 const flat = new Schema({
-    country:String,
+    country:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'CountryId'
+    },
     rentOrSale:String,
     description:{
                     address:{
@@ -24,7 +27,6 @@ const flat = new Schema({
                     fullDescription:String
     }
 })
-
 const Article= mongoose.model('flat',flat);
 
 module.exports =Article;

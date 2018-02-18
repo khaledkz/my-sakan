@@ -1,8 +1,18 @@
 var express = require('express');
 var router = express.Router();
 const flatDB=require('../../db-client/flat/flatDB');
+const countryClient=require('../../db-client/country/country');
+
  router.get('/add', function(req, res, next) {
-    res.render('flat-add')
+
+      cb=(countries)=>{
+            console.log(countries[0].order)
+            res.render('flat-add',{
+                countries
+            })
+        }
+    
+        countryClient.findCounrty({},cb)
 })
 
 router.get('/edit', function(req, res, next) {
