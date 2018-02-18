@@ -52,4 +52,39 @@ router.get('/edit/for-sale',(req,res,next)=>{
   res.render('flat-search-options',{page:'for-sale'})
 });
 
+router.get('/edit/for-sale/country',(req,res,next)=>{
+      res.render('search-country');
+
+})
+
+router.get('/edit/for-sale/company',(req,res,next)=>{
+      res.render('search-company');
+})
+
+router.get('/edit/for-sale/city',(req,res,next)=>{
+      res.render('search-city');
+})
+
+router.get('/edit/for-sale/flatrefnumber',(req,res,next)=>{
+      res.render('search-flatrefnumber');
+})
+
+
+router.get('/edit/to-rent/country',(req,res,next)=>{
+      res.render('search-country');
+})
+
+router.get('/edit/to-rent/company',(req,res,next)=>{
+      res.render('search-company');
+})
+
+router.get('/edit/to-rent/city',(req,res,next)=>{
+      res.render('search-city');
+})
+
+router.get('/edit/to-rent/flatrefnumber',(req,res,next)=>{
+      res.render('search-flatrefnumber');
+})
+
+
  module.exports = router;
