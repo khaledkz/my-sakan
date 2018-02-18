@@ -185,16 +185,34 @@ router.get('/edit/for-sale/company',(req,res,next)=>{
 
 router.get('/edit/for-sale/city',(req,res,next)=>{
       res.render('search-city');
-})
+});
+
+router.get('/edit/for-sale/all',(req,res,next)=>{
+      cb=(flats)=>{
+             res.render('list-torent-all-flat',{flats});
+      }
+
+      flatDB.findFlats({'rentOrSale':'sale'},cb)
+});
+
+
+router.get('/edit/to-rent/all',(req,res,next)=>{
+      
+      cb=(flats)=>{
+             res.render('list-torent-all-flat',{flats});
+      }
+
+      flatDB.findFlats({'rentOrSale':'rent'},cb)
+});
 
 router.get('/edit/for-sale/flatrefnumber',(req,res,next)=>{
       res.render('search-flatrefnumber');
-})
+});
 
 
 router.get('/edit/to-rent/country',(req,res,next)=>{
       res.render('search-country');
-})
+});
 
 router.get('/edit/to-rent/company',(req,res,next)=>{
       res.render('search-company');
