@@ -44,6 +44,15 @@ router.get('/edit/all/:flatId', function(req, res, next) {
       flatDB.singleFlat(flatId,cb)
 })
 
+router.get('/edit/all/:flatId/delete',(req,res,next)=>{
+     
+      const {flatId}=req.params;
+      const cb=(flat)=>{
+            res.redirect('/');
+      }
+      flatDB.deleteSingleFlat(flatId,cb);
+});
+
 router.post('/add',(req, res, next)=>{
     let query = req.body;
 

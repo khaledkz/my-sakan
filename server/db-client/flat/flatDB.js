@@ -1,3 +1,4 @@
+const {ObjectId}=require('mongodb');
 const Flat= require('../../models/Flat')
 require('../connection')
 
@@ -13,4 +14,8 @@ const singleFlat=(flatId,cb)=>{
     Flat.findById(flatId).then(cb);
 }
 
-module.exports={createFlat,findFlats,singleFlat};
+const deleteSingleFlat=(flat,cb)=>{
+    Flat.remove({_id:ObjectId(flat)}).then(cb);
+}
+
+module.exports={createFlat,findFlats,singleFlat,deleteSingleFlat};
