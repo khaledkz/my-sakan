@@ -9,4 +9,8 @@ const findFlats=(query,cb)=>{
     Flat.find(query).then(cb)
 }
 
-module.exports={createFlat,findFlats};
+const singleFlat=(flatId,cb)=>{
+    Flat.findById(flatId).then(cb);
+}
+
+module.exports={createFlat,findFlats,singleFlat};

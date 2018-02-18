@@ -21,15 +21,29 @@ router.get('/edit', function(req, res, next) {
 
 router.get('/edit/all', function(req, res, next) {
       const cb=(flats)=>{
-            console.log(flats[0].description.lettingInformation.price)
+
             res.render('edit-flat-all',{
                   flats
             })
 
       }
+
       flatDB.findFlats({},cb)
 })
-  
+
+router.get('/edit/all/:flatId', function(req, res, next) {
+      
+      const {flatId}=req.params;
+      
+      const cb=(flat)=>{
+            res.render('single-flat-list-all',{
+                  flat
+            });
+      }
+
+      flatDB.singleFlat(flatId,cb)
+})
+
 router.post('/add',(req, res, next)=>{
     let query = req.body;
 
@@ -107,6 +121,8 @@ router.get('/edit/to-rent/city',(req,res,next)=>{
 router.get('/edit/to-rent/flatrefnumber',(req,res,next)=>{
       res.render('search-flatrefnumber');
 })
+
+
 
 
  module.exports = router;
