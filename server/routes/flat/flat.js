@@ -19,6 +19,17 @@ router.get('/edit', function(req, res, next) {
     res.render('flat-edit-list')
 })
 
+router.get('/edit/all', function(req, res, next) {
+      const cb=(flats)=>{
+            console.log(flats[0].description.lettingInformation.price)
+            res.render('edit-flat-all',{
+                  flats
+            })
+
+      }
+      flatDB.findFlats({},cb)
+})
+  
 router.post('/add',(req, res, next)=>{
     let query = req.body;
 
@@ -28,6 +39,7 @@ router.post('/add',(req, res, next)=>{
        country:query.country,
        rentOrSale:query.rentOrSale,
       description:{
+            order:query.order,
         address:{
           city:query.city,
           postCode:query.postCode,
