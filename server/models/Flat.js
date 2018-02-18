@@ -8,7 +8,7 @@ const flat = new Schema({
         ref:'CountryId'
     },
     rentOrSale:String,
-    description:{
+    description:{   order:Number,
                     address:{
                         city:String,
                         postCode:String,
