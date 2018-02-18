@@ -7,12 +7,14 @@ router.get('/add',(req,res,next)=>{
 });
 
 router.get('/edit',(req,res,next)=>{
-     cb=(countries)=>{
+    
+    cb=(countries)=>{
         console.log(countries[0].order)
         res.render('edit-country',{
             countries
         })
     }
+
     countryClient.findCounrty({},cb)
 });
 
@@ -26,15 +28,24 @@ router.post('/add',(req,res,next)=>{
 })
 
 router.get('/edit/:countryID',(req,res,next)=>{
-const {countryID}=req.params;
 
-const  cb=(singleCountry)=>{
-    res.render('single-country',{
-        singleCountry
-    })
-}
+    const {countryID}=req.params;
+    
+    const  cb=(singleCountry)=>{
+        res.render('single-country',{
+            singleCountry
+        })
+    }
 
-countryClient.findSingleCountry(countryID,cb);
-
+    countryClient.findSingleCountry(countryID,cb);
  })
+
+router.get('/edit/:countryID/delete',(req,res,next)=>{
+    
+    const {countryID}=req.params;
+    const cb=()=>{
+            res.redirect('/country/edit')
+    }
+    countryClient.deleteSingleCountry(countryID,cb);
+});
 module.exports=router;
