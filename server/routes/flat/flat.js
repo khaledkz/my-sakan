@@ -6,13 +6,14 @@ const countryClient=require('../../db-client/country/country');
  router.get('/add', function(req, res, next) {
 
       cb=(countries)=>{
-            console.log(countries[0].order)
+            console.log(countries[0].order);
             res.render('flat-add',{
                 countries
             })
         }
     
-        countryClient.findCounrty({},cb)
+        countryClient.findCounrty({},cb);
+
 })
 
 router.get('/edit', function(req, res, next) {
@@ -47,11 +48,59 @@ router.get('/edit/all/:flatId', function(req, res, next) {
 router.get('/edit/all/:flatId/delete',(req,res,next)=>{
      
       const {flatId}=req.params;
-      const cb=(flat)=>{
+
+      const cb=()=>{
             res.redirect('/');
       }
+
       flatDB.deleteSingleFlat(flatId,cb);
 });
+
+router.get('/edit/all/:flatId/update',(req,res,next)=>{
+      const {flatId}=req.params;
+      
+      cb1=(countries)=>{
+
+            const cb2=(flat)=>{
+                  let countrySelected={};
+                  //console.log(flat.country)
+
+                  countries.map((country)=>{
+                        //console.log(country._id);
+                        countryId=(country._id).toString();
+                        flatCountry=(flat.country).toString();
+                         
+
+                        if( countryId===flatCountry){
+                               countrySelected=country;
+                        }
+                  })
+                  console.log(flat)
+                   res.render('single-flat-update',{
+                        flat,
+                        countries,
+                        countrySelected
+                  });
+            }
+      
+            flatDB.singleFlat(flatId,cb2)
+      }
+      
+      countryClient.findCounrty({},cb1)
+
+});
+
+// router.get('/edit/all/:flatId/update',(req,res,next)=>{
+     
+//       const {flatId}=req.params;
+
+//       const cb=()=>{
+//             res.redirect('/');
+//       }
+
+//       flatDB.updateSingleFlat(flatId,req.body,cb);
+// });
+
 
 router.post('/add',(req, res, next)=>{
     let query = req.body;
