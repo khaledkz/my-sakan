@@ -6,7 +6,6 @@ router.get('/add',(req,res,next)=>{
     res.render('add-country')
 });
 
- 
 router.get('/edit',(req,res,next)=>{
      cb=(countries)=>{
         console.log(countries[0].order)
@@ -26,4 +25,16 @@ router.post('/add',(req,res,next)=>{
     countryClient.addCountry(req.body,cb);
 })
 
+router.get('/edit/:countryID',(req,res,next)=>{
+const {countryID}=req.params;
+
+const  cb=(singleCountry)=>{
+    res.render('single-country',{
+        singleCountry
+    })
+}
+
+countryClient.findSingleCountry(countryID,cb);
+
+ })
 module.exports=router;
