@@ -5,4 +5,8 @@ const createFlat =(query,cb)=>{
     Flat.create(query).then(cb);
 }
 
+const findFlats=(query,cb)=>{
+    Flat.find()
+}
+
 module.exports={createFlat};
