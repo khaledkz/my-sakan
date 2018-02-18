@@ -2,7 +2,7 @@
     <div class="form-group has-success">
 
         <label for="example-text-input text-success" class="col-12 col-form-label ">
-            <h3 class="text-danger ml-4">ADD NEW FLAT</h3>
+            <h3 class="text-danger ml-4">Update Single FLAT</h3>
         </label>
 
         <label for="example-text-input text-success " class="col-12 col-form-label">
@@ -10,12 +10,11 @@
         </label>
 
 
-
-        <div class="col-lg-6 col-md-8 col-sm-9 col-xs-9 ">
+         <div class="col-lg-6 col-md-8 col-sm-9 col-xs-9 ">
 
             <select data-placeholder="Country..." value="{{countrySelected._id}}" name="country" class="col-lg-6 col-md-8 col-sm-9 col-xs-9  p-2">
 
-                <option disabled selected value> -- {{countrySelected.countryName}} selected -- </option>
+                <option selected value="{{countrySelected._id}}"> -- {{countrySelected.countryName}} selected -- </option>
                 {{#each countries}}
                 <option value="{{this._id}}">{{this.countryName}}</option>
                 {{/each}}
@@ -32,7 +31,7 @@
 
             <select data-placeholder="Country..." name="rentOrSale" value="{{flat.rentOrSale}}" class="col-lg-6 col-md-8 col-sm-9 col-xs-9  p-2">
 
-                <option disabled selected value> -- {{flat.rentOrSale}} selected -- </option>
+                <option selected value="{{flat.rentOrSale}}"> -- {{flat.rentOrSale}} selected -- </option>
                 <option value="rent">Rent</option>
                 <option value="sale">Sale</option>
 
@@ -126,7 +125,7 @@
 
             <select data-placeholder="Country..." name="furnishing" value="{{flat.description.lettingInformation.furnishing}}" class="col-lg-6 col-md-8 col-sm-9 col-xs-9  p-2">
 
-                <option disabled selected value> -- {{flat.description.lettingInformation.furnishing}} selected -- </option>
+                <option  selected value="{{flat.description.lettingInformation.furnishing}}"> -- {{flat.description.lettingInformation.furnishing}} selected -- </option>
                 <option value="furnished">furnished</option>
                 <option value="unfurnished">unfurnished</option>
             </select>
@@ -140,7 +139,7 @@
 
             <select data-placeholder="Country..." name="lettingType" value="{{flat.description.lettingInformation.lettingType}}" class="col-lg-6 col-md-8 col-sm-9 col-xs-9  p-2">
 
-                <option disabled selected value> -- {{flat.description.lettingInformation.lettingType}} selected -- </option>
+                <option  selected value="{{flat.description.lettingInformation.lettingType}}"> -- {{flat.description.lettingInformation.lettingType}} selected -- </option>
                 <option  value="Long">Long Term</option>
                 <option  value="Short">Short Term</option>
             </select>

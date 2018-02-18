@@ -90,16 +90,44 @@ router.get('/edit/all/:flatId/update',(req,res,next)=>{
 
 });
 
-// router.get('/edit/all/:flatId/update',(req,res,next)=>{
+router.post('/edit/all/:flatId/update',(req,res,next)=>{
      
-//       const {flatId}=req.params;
+      const {flatId}=req.params;
 
-//       const cb=()=>{
-//             res.redirect('/');
-//       }
+      let query = req.body;
 
-//       flatDB.updateSingleFlat(flatId,req.body,cb);
-// });
+
+     let newQuery ={
+
+       country:query.country,
+       rentOrSale:query.rentOrSale,
+      description:{
+            order:query.order,
+        address:{
+          city:query.city,
+          postCode:query.postCode,
+          street:query.street,
+          flatNumber:query.flatNumber,
+        },
+        title:query.title,
+        lettingInformation:{
+          price:query.price,
+          dataAvailable:query.dataAvailable,
+          furnishing:query.furnishing,
+          lettingType:query.lettingType,
+          reducedOnWebsite:query.reducedOnWebsite,
+          deposit:query.deposit
+        },
+        fullDescription:query.fullDescription
+      }
+    };
+
+      const cb=()=>{
+            res.redirect('/');
+      }
+
+      flatDB.updateSingleFlat(flatId,newQuery,cb);
+});
 
 
 router.post('/add',(req, res, next)=>{

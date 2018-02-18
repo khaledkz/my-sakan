@@ -18,8 +18,8 @@ const deleteSingleFlat=(flat,cb)=>{
     Flat.remove({_id:ObjectId(flat)}).then(cb);
 }
 
-const updateSingleFlat=(flat,cb)=>{
-    Flat.updateOne(flat,query).then(cb);
+const updateSingleFlat=(flat,query,cb)=>{
+    Flat.updateOne({_id:ObjectId(flat)},query).then(cb);
 }
 
 module.exports={createFlat,findFlats,singleFlat,deleteSingleFlat,updateSingleFlat};
