@@ -6,8 +6,15 @@ router.get('/add',(req,res,next)=>{
     res.render('add-country')
 });
 
+ 
 router.get('/edit',(req,res,next)=>{
-    res.render('edit-country')
+     cb=(countries)=>{
+        console.log(countries[0].order)
+        res.render('edit-country',{
+            countries
+        })
+    }
+    countryClient.findCounrty({},cb)
 });
 
 router.post('/add',(req,res,next)=>{
