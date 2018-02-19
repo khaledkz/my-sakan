@@ -90,13 +90,14 @@ a {
 .flat-edit-first-page ul{
    display: flex;
   align-items: center;
-  height: 200px;
+  height: 130px;
   width:100%;
   justify-content: space-around;
   background:black;
   border-radius: 10px;
   width:95%;
-  margin: 2.5%;
+  margin-left: 2.5%;
+  margin-bottom:4px;
 }
 .flat-edit-first-page ul li{
   list-style: none;
