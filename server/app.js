@@ -9,7 +9,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 const flat= require('./routes/flat/flat');
 const country= require('./routes/country/country');
-
+const countryApi=require('./routes/api/countries/countries');
 var app = express();
 
 // view engine setup
@@ -28,6 +28,7 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/flat',flat);
 app.use('/country',country);
+app.use('/api/countries',countryApi)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
