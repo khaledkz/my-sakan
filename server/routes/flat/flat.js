@@ -215,6 +215,17 @@ router.get('/edit/for-sale/country/:countryId', (req, res, next) => {
 
 })
 
+router.get('/edit/for-sale/country/:countryId/:flatId', (req, res, next) => {
+    
+      const {countryId}=req.params;
+      const {flatId}=req.params;
+    
+      const cb=(flat)=>{
+            res.render('single-flat-list-all',{flat})
+      }
+
+      flatDB.singleFlat(flatId,cb);
+})
 
 router.get('/edit/to-rent/all', (req, res, next) => {
 
@@ -240,6 +251,18 @@ router.get('/edit/to-rent/country', (req, res, next) => {
 
       countryClient.findCounrty({}, cb);
 });
+ 
+router.get('/edit/to-rent/country/:countryId/:flatId', (req, res, next) => {
+    
+      const {countryId}=req.params;
+      const {flatId}=req.params;
+    
+      const cb=(flat)=>{
+            res.render('single-flat-list-all',{flat})
+      }
+
+      flatDB.singleFlat(flatId,cb);
+})
 
 router.get('/edit/to-rent/country/:countryId', (req, res, next) => {
       const {countryId}= req.params;
