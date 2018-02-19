@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-
+import React  from 'react';
+import './css/footer.css'
 const Footer =()=>(
-    <div>
+    <footer>
         <p>CopyRight &copy MY-SAKAN 2018 </p>
-    </div>
+    </footer>
 );
 
 export default Footer;
