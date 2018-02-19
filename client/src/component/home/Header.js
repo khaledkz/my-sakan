@@ -1,22 +1,22 @@
-import React, { Component } from 'react';
-
+import React from 'react';
+import './css/header.css'
 
 const Header = () => (
-    <div>
-        <div>
-            <img width="50" src="https://hostelhunting.com/img/explore/howitworks/look.png" />
+    <header>
+        <div className="header-first-part">
+            <img alt="sakan" width="50" src="https://hostelhunting.com/img/explore/howitworks/look.png" />
             <h3>My-Sakan</h3>
         </div>
 
-        <div>
+        <div className="header-second-part">
             <nav>
                 <ul>
-                    <li>About</li>
-                    <li>More</li>
-                    <li>Contact</li>
+                    <a><li>About</li></a>
+                    <a><li>More</li></a>
+                    <a><li>Contact</li></a>
                 </ul>
             </nav>
         </div>
-    </div>
+    </header>
 );
 export default Header;
