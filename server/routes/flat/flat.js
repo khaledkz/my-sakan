@@ -33,16 +33,15 @@ router.get('/edit/all', function (req, res, next) {
       flatDB.findFlats({}, cb)
 })
 
-router.get('/edit/TitleOrId',(req,res,next)=>{
+router.get('/edit/id',(req,res,next)=>{
       res.render('edit-option-id');
 });
  
-router.post('/edit/TitleOrId',(req,res,next)=>{
+router.post('/edit/id',(req,res,next)=>{
       const query = req.body;  
  
- 
       cb=(flat)=>{
-            console.log(flat)
+            res.render('single-flat-list-all',{flat})
       }
 
       flatDB.singleFlat(query,cb);
