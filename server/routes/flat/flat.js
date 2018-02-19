@@ -33,6 +33,22 @@ router.get('/edit/all', function (req, res, next) {
       flatDB.findFlats({}, cb)
 })
 
+router.get('/edit/TitleOrId',(req,res,next)=>{
+      res.render('edit-option-id');
+});
+ 
+router.post('/edit/TitleOrId',(req,res,next)=>{
+      const query = req.body;  
+ 
+ 
+      cb=(flat)=>{
+            console.log(flat)
+      }
+
+      flatDB.singleFlat(query,cb);
+
+})
+
 router.get('/edit/all/:flatId', function (req, res, next) {
 
       const { flatId } = req.params;
