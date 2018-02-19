@@ -2,7 +2,10 @@ footer{
     background: rgb(117, 110, 110);
     padding: 10px;
     color:white;
-
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width:100%;
 }
 
 footer p{
