@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './css/search.css'
-import ApiCountries from '../../helper/apiclient/apiClient';
+import ApiClient from '../../helper/apiclient/apiClient';
 
 export default class SearchSection extends Component {
         constructor() {
@@ -12,14 +12,14 @@ export default class SearchSection extends Component {
                         selectedCountry: '',
                         isCountrySelected: false,
                         searchOption: '',
-                        isSearchOptionSelected: false
+                        isSearchOptionSelected: false,
+                        flats:[]
                 }
         }
 
         componentDidMount() {
-                ApiCountries.GetCountries().then((getContries) => {
-                        console.log(getContries)
-                        this.setState({
+                ApiClient.GetCountries().then((getContries) => {
+                         this.setState({
                                 countries: getContries.data
                         });
                 });
@@ -32,18 +32,25 @@ export default class SearchSection extends Component {
 
         }
         searchToRent = () => {
-                this.setState({
-                        searchOption: 'toRent',
-                        isSearchOptionSelected: true
-
-
+                ApiClient.GetFlatCountryAndRentOrSale(this.state.selectedCountry,'rent').then((getFlats)=>{
+                         this.setState({
+                                 isSearchOptionSelected: true,
+                                flats:getFlats.data
+        
+        
+                        });
                 });
+                
 
         }
         searchForSale = () => {
-                this.setState({
-                        searchOption: 'forSale',
-                        isSearchOptionSelected: true
+                ApiClient.GetFlatCountryAndRentOrSale(this.state.selectedCountry,'sale').then((getFlats)=>{
+                         this.setState({
+                                 isSearchOptionSelected: true,
+                                flats:getFlats.data
+        
+        
+                        });
                 });
 
         }
@@ -51,12 +58,25 @@ export default class SearchSection extends Component {
         render() {
                 if (this.state.isCountrySelected) {
                         if (this.state.isSearchOptionSelected) {
-
+ 
                                 return (
                                         <div className="searchSection">
-
-                                                Search Option: {this.state.searchOption}
-                                                Seach Country: {this.state.selectedCountry}
+                                                {this.state.flats.map((x,i)=>(
+                                                <div key={i}>   
+                                                        Title:<h1>{x.description.title}</h1>
+                                                        City:<h2>{x.description.address.city}</h2>
+                                                        Flat number:<h2>{x.description.address.flatNumber}</h2>
+                                                        Post Code:<h2>{x.description.address.postCode}</h2>
+                                                        Street:<h2>{x.description.address.street}</h2>
+                                                        Option:<h3>{x.rentOrSale}</h3>
+                                                        letting information
+                                                        {x.description.lettingInformation.dataAvailable}
+                                                        {x.description.lettingInformation.deposit}
+                                                        {x.description.lettingInformation.price}
+                                                        {x.description.lettingInformation.reducedOnWebsite}
+                                                </div>     
+                                                ))}
+                                                 
                                         </div>
                                 )
                         } else {
@@ -64,12 +84,11 @@ export default class SearchSection extends Component {
                                         <div className="searchSection">
 
                                                 <h3>Where do you want the flat? choose Country</h3>
-                                                <select name="cars" onChange={this.countrySelected}>
-                                                        <option disabled value selected>--Select Country--</option>
-                                                        {this.state.countries.map(x => (
-                                                                <option value={x.countrySymbol}>{x.countryName}</option>
-                                                        ))
-                                                        }
+                                                <select  onChange={this.countrySelected}>
+                                                        <option style={{color:'grey'}}>--Select Country--</option>                                                       
+                                                         {this.state.countries.map((x,i)=>(
+                                                                <option key={i} value={x._id}>{x.countryName}</option>
+                                                         ))}                                                      
                                                 </select>
                                                 <div>
                                                 </div>
@@ -80,44 +99,19 @@ export default class SearchSection extends Component {
                                                 {this.state.searchOption}
                                         </div>
                                 )
-
                         }
-                        return (
-                                <div className="searchSection">
-
-                                        <h3>Where do you want the flat? choose Country</h3>
-
-                                        <select name="cars" onChange={this.countrySelected}>
-                                                <option disabled value selected>--Select Country--</option>
-                                                {this.state.countries.map(x => (
-                                                        <option value={x.countrySymbol}>{x.countryName}</option>
-                                                ))
-                                                }
-                                        </select>
-
-
-                                        <div>
-                                                <button onClick={this.searchToRent}>To Rent</button>
-                                                <button onClick={this.searchForSale}>For Sale</button>
-                                        </div>
-
-                                        {this.state.searchOption}
-
-                                </div>
-                        )
+                         
                 } else {
                         return (
                                 <div className="searchSection">
 
                                         <h3>Where do you want the flat? choose Country</h3>
 
-                                        <select name="cars" onChange={this.countrySelected}>
-                                                <option disabled value selected>--Select Country--</option>
-                                                {
-                                                        this.state.countries.map(x => (
-                                                        <option value={x.countrySymbol}>{x.countryName}</option>
-                                                        ))
-                                                }
+                                        <select   onChange={this.countrySelected}>
+                                                <option style={{color:'grey'}}>--Select Country--</option>
+                                                {this.state.countries.map((x,i)=>(
+                                                                <option key={i} value={x._id}>{x.countryName}</option>
+                                                         ))}  
                                         </select>
 
                                 </div>

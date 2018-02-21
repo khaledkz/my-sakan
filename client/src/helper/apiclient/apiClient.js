@@ -6,7 +6,7 @@ const ApiClient={
     GetCountries:()=>{
         return axios.get(`${apiUrl}/api/countries/all`)
     },
-    GetFlatsRelatedToCountryAndRentOrSale:(country,rentOrSale)=>{
+    GetFlatCountryAndRentOrSale:(country,rentOrSale)=>{
         return axios.get(`${apiUrl}/api/flat/${country}/${rentOrSale}`)
     }
 }
