@@ -9,10 +9,10 @@ export default class SearchSection extends Component {
                         countries: [
                         ],
                         title: 'khaled',
-                        selectedCountry:'',
-                        isCountrySelected:false,
-                        searchOption:'',
-                        isSearchOptionSelected:false
+                        selectedCountry: '',
+                        isCountrySelected: false,
+                        searchOption: '',
+                        isSearchOptionSelected: false
                 }
         }
 
@@ -24,100 +24,104 @@ export default class SearchSection extends Component {
                         });
                 });
         }
-        countrySelected=(event)=>{
+        countrySelected = (event) => {
                 this.setState({
                         selectedCountry: event.target.value,
-                        isCountrySelected:true
+                        isCountrySelected: true
                 });
 
         }
-        searchToRent=()=>{
+        searchToRent = () => {
                 this.setState({
-                        searchOption:'toRent',
-                        isSearchOptionSelected:true 
-   
+                        searchOption: 'toRent',
+                        isSearchOptionSelected: true
+
 
                 });
 
         }
-        searchForSale=()=>{
+        searchForSale = () => {
                 this.setState({
-                        searchOption:'forSale',
-                        isSearchOptionSelected:true 
+                        searchOption: 'forSale',
+                        isSearchOptionSelected: true
                 });
 
         }
-        
+
         render() {
-                if(this.state.isCountrySelected){
-                        if(this.state.isSearchOptionSelected){
+                if (this.state.isCountrySelected) {
+                        if (this.state.isSearchOptionSelected) {
 
-                                return(
+                                return (
                                         <div className="searchSection">
-                                                 
-                                                 Search Option: {this.state.searchOption}
-                                                 Seach Country: {this.state.selectedCountry}
-                                         </div>   
+
+                                                Search Option: {this.state.searchOption}
+                                                Seach Country: {this.state.selectedCountry}
+                                        </div>
                                 )
-                        }else{
-                                return(
+                        } else {
+                                return (
                                         <div className="searchSection">
-                                         
-                                        <h3>Where do you want the flat? choose Country</h3>
-                                        <select name="cars" onChange={this.countrySelected}>
+
+                                                <h3>Where do you want the flat? choose Country</h3>
+                                                <select name="cars" onChange={this.countrySelected}>
                                                         <option disabled value selected>--Select Country--</option>
                                                         {this.state.countries.map(x => (
                                                                 <option value={x.countrySymbol}>{x.countryName}</option>
                                                         ))
                                                         }
                                                 </select>
+                                                <div>
+                                                </div>
+                                                <div>
+                                                        <button onClick={this.searchToRent}>To Rent</button>
+                                                        <button onClick={this.searchForSale}>For Sale</button>
+                                                </div>
+                                                {this.state.searchOption}
+                                        </div>
+                                )
+
+                        }
+                        return (
+                                <div className="searchSection">
+
+                                        <h3>Where do you want the flat? choose Country</h3>
+
+                                        <select name="cars" onChange={this.countrySelected}>
+                                                <option disabled value selected>--Select Country--</option>
+                                                {this.state.countries.map(x => (
+                                                        <option value={x.countrySymbol}>{x.countryName}</option>
+                                                ))
+                                                }
+                                        </select>
+
+
                                         <div>
-                                 </div>
-                                        <div>
-                                               <button onClick={this.searchToRent}>To Rent</button>
+                                                <button onClick={this.searchToRent}>To Rent</button>
                                                 <button onClick={this.searchForSale}>For Sale</button>
                                         </div>
+
                                         {this.state.searchOption}
-                                 </div>   
-                                )
-                                
-                        }
-                        return(
-                                <div className="searchSection">
-                                 
-                                <h3>Where do you want the flat? choose Country</h3>
-                                <select name="cars" onChange={this.countrySelected}>
-                                                <option disabled value selected>--Select Country--</option>
-                                                {this.state.countries.map(x => (
-                                                        <option value={x.countrySymbol}>{x.countryName}</option>
-                                                ))
-                                                }
-                                        </select>
-                                <div>
-                         </div>
-                                <div>
-                                       <button onClick={this.searchToRent}>To Rent</button>
-                                        <button onClick={this.searchForSale}>For Sale</button>
+
                                 </div>
-                                {this.state.searchOption}
-                         </div>   
                         )
-                }else{
-                return (
-                        <div className="searchSection">
-                                 
-                                <h3>Where do you want the flat? choose Country</h3>
-                                <select name="cars" onChange={this.countrySelected}>
+                } else {
+                        return (
+                                <div className="searchSection">
+
+                                        <h3>Where do you want the flat? choose Country</h3>
+
+                                        <select name="cars" onChange={this.countrySelected}>
                                                 <option disabled value selected>--Select Country--</option>
-                                                {this.state.countries.map(x => (
+                                                {
+                                                        this.state.countries.map(x => (
                                                         <option value={x.countrySymbol}>{x.countryName}</option>
-                                                ))
+                                                        ))
                                                 }
                                         </select>
-                                <div>
-                         </div>
-                         </div>
-                );
-        }
+
+                                </div>
+                        );
+                }
         }
 }
