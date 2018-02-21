@@ -7,6 +7,7 @@ const flat = new Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:'CountryId'
     },
+    briefDescription:String,
     rentOrSale:String,
     description:{   order:Number,
                     address:{

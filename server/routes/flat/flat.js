@@ -117,6 +117,7 @@ router.post('/edit/all/:flatId/update', (req, res, next) => {
 
             country: query.country,
             rentOrSale: query.rentOrSale,
+            briefDescription:query.briefDescription,
             description: {
                   order: query.order,
                   address: {
@@ -154,6 +155,7 @@ router.post('/add', (req, res, next) => {
 
             country: query.country,
             rentOrSale: query.rentOrSale,
+            briefDescription:query.briefDescription,
             description: {
                   order: query.order,
                   address: {
