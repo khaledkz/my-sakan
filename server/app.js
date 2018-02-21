@@ -11,6 +11,8 @@ var users = require('./routes/users');
 const flat= require('./routes/flat/flat');
 const country= require('./routes/country/country');
 const countryApi=require('./routes/api/countries/countries');
+const flatApi =require('./routes/api/flat/flat');
+
 var app = express();
 app.use(cors());
 
@@ -31,6 +33,7 @@ app.use('/users', users);
 app.use('/flat',flat);
 app.use('/country',country);
 app.use('/api/countries',countryApi)
+app.use('/api/flat',flatApi)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
