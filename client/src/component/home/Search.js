@@ -10,7 +10,9 @@ export default class SearchSection extends Component {
                         ],
                         title: 'khaled',
                         selectedCountry:'',
-                        isCountrySelected:false
+                        isCountrySelected:false,
+                        searchOption:'',
+                        isSearchOptionSelected:false
                 }
         }
 
@@ -29,8 +31,57 @@ export default class SearchSection extends Component {
                 });
 
         }
+        searchToRent=()=>{
+                this.setState({
+                        searchOption:'toRent',
+                        isSearchOptionSelected:true 
+   
+
+                });
+
+        }
+        searchForSale=()=>{
+                this.setState({
+                        searchOption:'forSale',
+                        isSearchOptionSelected:true 
+                });
+
+        }
+        
         render() {
                 if(this.state.isCountrySelected){
+                        if(this.state.isSearchOptionSelected){
+
+                                return(
+                                        <div className="searchSection">
+                                                 
+                                                 Search Option: {this.state.searchOption}
+                                                 Seach Country: {this.state.selectedCountry}
+                                         </div>   
+                                )
+                        }else{
+                                return(
+                                        <div className="searchSection">
+                                         
+                                        <h3>Where do you want the flat? choose Country</h3>
+                                        <select name="cars" onChange={this.countrySelected}>
+                                                        <option disabled value selected>--Select Country--</option>
+                                                        {this.state.countries.map(x => (
+                                                                <option value={x.countrySymbol}>{x.countryName}</option>
+                                                        ))
+                                                        }
+                                                </select>
+                                        <div>
+                                 </div>
+                                        <div>
+                                               <button onClick={this.searchToRent}>To Rent</button>
+                                                <button onClick={this.searchForSale}>For Sale</button>
+                                        </div>
+                                        {this.state.searchOption}
+                                 </div>   
+                                )
+                                
+                        }
                         return(
                                 <div className="searchSection">
                                  
@@ -44,11 +95,11 @@ export default class SearchSection extends Component {
                                         </select>
                                 <div>
                          </div>
-
                                 <div>
-                                       <button>To Rent</button>
-                                        <button>For Sale</button>
+                                       <button onClick={this.searchToRent}>To Rent</button>
+                                        <button onClick={this.searchForSale}>For Sale</button>
                                 </div>
+                                {this.state.searchOption}
                          </div>   
                         )
                 }else{
