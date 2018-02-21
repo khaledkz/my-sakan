@@ -76,7 +76,7 @@ export default class SearchSection extends Component {
                                                         {x.description.lettingInformation.deposit}
                                                         {x.description.lettingInformation.price}
                                                         {x.description.lettingInformation.reducedOnWebsite} */}
-                                                                <FlatBrief description={x.description.fullDescription} postCode={x.description.address.postCode} flatNumber={x.description.address.flatNumber} street={x.description.address.street} title={x.description.title} price={x.description.lettingInformation.price} />
+                                                                <FlatBrief briefDescription={x.briefDescription}description={x.description.fullDescription} postCode={x.description.address.postCode} flatNumber={x.description.address.flatNumber} street={x.description.address.street} title={x.description.title} price={x.description.lettingInformation.price} />
                                                         </div>
                                                 ))}
 

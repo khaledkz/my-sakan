@@ -8,7 +8,8 @@ const FlatBrief = (props) => {
         <h2>{props.title}</h2>
         <h3>{props.price}</h3>
         <h3>{props.street} {props.flatNumber} {props.postCode} </h3>
-        <h4>{props.description}</h4>
+        <h4>{props.briefDescription}</h4>
+        <h6>{props.description}</h6>
 
       </div>
     </div>
