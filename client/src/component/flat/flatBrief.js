@@ -1,18 +1,18 @@
 import React from 'react';
-import { Card, Button, CardTitle, CardText } from 'reactstrap';
-
-const Example = (props) => {
+ import './css/flatBrief.css'
+const FlatBrief = (props) => {
   return (
-    <div>
-       
-      <Card body className="text-center">
-        <CardTitle>{this.props.title}</CardTitle>
-        <CardText>{this.props.subtitle}</CardText>
-        <Button>Full Discribtion</Button>
-      </Card>
-      
+    <div className="briefDiscriptiona">
+      <div className="briefDiscription">
+
+        <h2>{props.title}</h2>
+        <h3>{props.price}</h3>
+        <h3>{props.street} {props.flatNumber} {props.postCode} </h3>
+        <h4>{props.description}</h4>
+
+      </div>
     </div>
   );
 };
 
-export default Example;
+export default FlatBrief;
