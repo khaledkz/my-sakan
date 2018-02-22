@@ -15,4 +15,12 @@ router.get('/:countryId/:flatoption',(req,res,next)=>{
 
 })
 
+router.get('/:flatId',(req,res,next)=>{
+    const {flatId} =req.params;
+    cb = (flat)=>{
+        res.json(flat)
+    }
+    FlatClient.singleFlat(flatId,cb);
+});
+
 module.exports =router;
