@@ -1,5 +1,6 @@
 import React from 'react';
 import './css/header.css'
+import { Link } from "react-router-dom";
 
 const Header = () => (
     <header>
@@ -10,13 +11,21 @@ const Header = () => (
 
         <div className="header-second-part">
             <nav>
-                <ul>
-                    <a><li>About</li></a>
-                    <a><li>More</li></a>
-                    <a><li>Contact</li></a>
+                <ul>                 
+                       <Link to="/"><li>Home</li></Link>
+                       <Link to="/about"><li>About</li></Link>
+                       <Link to="/more"><li>More</li></Link>
+                       <Link to="/contact"><li>Contact</li></Link>
                 </ul>
             </nav>
         </div>
     </header>
 );
 export default Header;
+
+
+const Menu = () => (
+    <div>
+        
+    </div>
+);
