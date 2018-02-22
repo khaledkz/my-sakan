@@ -1,19 +1,53 @@
-import React from 'react';
- import './css/flatBrief.css'
-const FlatBrief = (props) => {
-  return (
-    <div className="briefDiscriptiona">
-      <div className="briefDiscription">
+import React, { Component } from 'react';
+import './css/flatBrief.css'
+import apiClient from '../../helper/apiclient/apiClient';
+import SigleFlat from './SingleFlat';
 
-        <h2>{props.title}</h2>
-        <h3>{props.price}</h3>
-        <h3>{props.street} {props.flatNumber} {props.postCode} </h3>
-        <h4>{props.briefDescription}</h4>
-        <h6>{props.description}</h6>
+export default class FlatBrief extends Component {
 
-      </div>
-    </div>
-  );
-};
+  constructor() {
+    super();
 
-export default FlatBrief;
+    this.state = {
+      singleFlat: false,
+      flat: {}
+    }
+  }
+
+  getSingleFlat=()=>{
+    apiClient.GetSingleFlat(this.props.flatid).then((flat)=>{
+      console.log('ffffffffffffffffffffffff')
+      console.log(flat);
+      console.log('ffffffffffffffffffffffff')
+
+      this.setState({
+        singleFlat: true,
+        flat: flat
+      })
+    });
+  }
+  render() {
+    if (this.state.singleFlat) {
+
+
+      return (
+        <div>
+          <div className="briefDiscriptiona">
+            <div className="briefDiscription">
+
+              <h2>{this.props.title}</h2>
+              <h3>{this.props.price}</h3>
+              <h3>{this.props.street} {this.props.flatNumber} {this.props.postCode} </h3>
+              <h4>{this.props.briefDescription}</h4>
+              <h6>{this.props.description}</h6>
+              <button onClick={this.getSingleFlat}>Full Describtion</button>
+
+            </div>
+          </div>
+        </div>
+      );
+    } else {
+      < SigleFlat />
+    }
+  }
+}
