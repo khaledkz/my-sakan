@@ -8,6 +8,9 @@ const ApiClient={
     },
     GetFlatCountryAndRentOrSale:(country,rentOrSale)=>{
         return axios.get(`${apiUrl}/api/flat/${country}/${rentOrSale}`)
+    },
+    GetSingleFlat:(flatId)=>{
+        return axios.get(`${apiUrl}/api/flat/${flatId}`)
     }
 }
 
