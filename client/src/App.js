@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
  import './App.css';
  import AppContainer from './container/AppCountainer';
+ import SingleFlat from './component/flat/SingleFlat'
  
   class App extends Component {
   render() {
@@ -9,6 +10,7 @@ import React, { Component } from 'react';
 
           <div className="App-inside">
             <AppContainer/>
+            <SingleFlat/>
         
           </div>
        </div> 

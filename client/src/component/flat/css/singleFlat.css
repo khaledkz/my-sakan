@@ -1,0 +1,25 @@
+ .singleFlatOuter{
+    width:100%;
+    margin-bottom: 120px;
+}
+
+.sigleFlatInner{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width:90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.sigleFlatInner > *{
+    margin-top: 13px;
+}
+
+.sigleFlatInner p{
+    width:90%;
+    text-align: justify;
+}
