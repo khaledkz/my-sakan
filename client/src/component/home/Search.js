@@ -25,6 +25,17 @@ export default class SearchSection extends Component {
                         });
                 });
         }
+        refreshPage = () => {
+                        this.setState({
+                                 
+                                title: 'khaled',
+                                selectedCountry: '',
+                                isCountrySelected: false,
+                                searchOption: '',
+                                isSearchOptionSelected: false,
+                                flats: []     
+                        })
+        }
         countrySelected = (event) => {
                 this.setState({
                         selectedCountry: event.target.value,
@@ -34,7 +45,7 @@ export default class SearchSection extends Component {
 
         searchToRent = () => {
                 ApiClient.GetFlatCountryAndRentOrSale(this.state.selectedCountry, 'rent').then((getFlats) => {
-                      console.log(getFlats)
+                        console.log(getFlats)
                         this.setState({
                                 isSearchOptionSelected: true,
                                 flats: getFlats.data
@@ -63,6 +74,8 @@ export default class SearchSection extends Component {
 
                                 return (
                                         <div className="searchSection">
+                                                <button onClick={this.refreshPage}>Another Search</button>
+
                                                 {this.state.flats.map((x, i) => (
                                                         <div key={i}>
                                                                 {/* Title:<h1>{x.description.title}</h1>
@@ -76,7 +89,7 @@ export default class SearchSection extends Component {
                                                         {x.description.lettingInformation.deposit}
                                                         {x.description.lettingInformation.price}
                                                         {x.description.lettingInformation.reducedOnWebsite} */}
-                                                                <FlatBrief briefDescription={x.briefDescription}description={x.description.fullDescription} postCode={x.description.address.postCode} flatNumber={x.description.address.flatNumber} street={x.description.address.street} title={x.description.title} price={x.description.lettingInformation.price} />
+                                                                <FlatBrief briefDescription={x.briefDescription} description={x.description.fullDescription} postCode={x.description.address.postCode} flatNumber={x.description.address.flatNumber} street={x.description.address.street} title={x.description.title} price={x.description.lettingInformation.price} />
                                                         </div>
                                                 ))}
 
