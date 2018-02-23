@@ -15,6 +15,7 @@ export default class SearchSection extends Component {
                         isCountrySelected: false,
                         searchOption: '',
                         isSearchOptionSelected: false,
+                        selectedCountryName:'',
                         flats: []
                 }
         }
@@ -31,6 +32,7 @@ export default class SearchSection extends Component {
 
                         title: 'khaled',
                         selectedCountry: '',
+                        selectedCountryName:'',
                         isCountrySelected: false,
                         searchOption: '',
                         isSearchOptionSelected: false,
@@ -38,7 +40,20 @@ export default class SearchSection extends Component {
                 })
         }
         countrySelected = (event) => {
-                this.setState({
+
+                this.state.countries.map((x)=>{
+                        let contryId=x._id;
+                        let targeId=event.target.value;        
+                        contryId.toString();
+                        targeId.toString();
+                         if(contryId===targeId){
+                                 return(
+                                  this.setState({
+                                        selectedCountryName:x.countryName
+                                 }));
+                         } 
+                })
+                  this.setState({
                         selectedCountry: event.target.value,
                         isCountrySelected: true
                 });
@@ -75,7 +90,7 @@ export default class SearchSection extends Component {
 
                                 return (
                                         <div className="searchSection">
-                                                <button onClick={this.refreshPage}>Another Search</button>
+                                                <button className='newSearchBtn' onClick={this.refreshPage}>New Search</button>
 
                                                 {this.state.flats.map((x, i) => (
                                                         <div key={i}>
@@ -90,23 +105,29 @@ export default class SearchSection extends Component {
                                 )
                         } else {
                                 return (
+                                        <div className="searchSectionOuter">
                                         <div className="searchSection">
 
-                                                <h3>Where do you want the flat? choose Country</h3>
+                                                <h3>{this.state.selectedCountryName} is Selected, you can select another country:</h3>
+                                                
                                                 <select onChange={this.countrySelected}>
-                                                        <option style={{ color: 'grey' }}>--Select Country--</option>
+                                                        <option style={{ color: 'grey' }}>--{this.state.selectedCountryName}Selected--</option>
                                                         {this.state.countries.map((x, i) => (
-                                                                <option key={i} value={x._id}>{x.countryName}</option>
+                                                                        
+                                                                <option key={i} value={x._id}>{x.countryName} </option>
                                                         ))}
                                                 </select>
+                                                
+                                                <h3>Choose Search Option Rent/Solid:</h3>
+                                                 
                                                 <div>
                                                 </div>
-                                                <div>
+                                                <div className="searchSection-buttons">
                                                         <button onClick={this.searchToRent}>To Rent</button>
                                                         <button onClick={this.searchForSale}>For Sale</button>
                                                 </div>
                                                 {this.state.searchOption}
-                                        </div>
+                                        </div> </div>
                                 )
                         }
 
@@ -119,7 +140,8 @@ export default class SearchSection extends Component {
                                         <select onChange={this.countrySelected}>
                                                 <option style={{ color: 'grey' }}>--Select Country--</option>
                                                 {this.state.countries.map((x, i) => (
-                                                        <option key={i} value={x._id}>{x.countryName}</option>
+                                                                
+                                                         <option key={i} value={x._id}>{x.countryName} </option>
                                                 ))}
                                         </select>
                                 </div>
