@@ -22,10 +22,3 @@ const Header = () => (
     </header>
 );
 export default Header;
-
-
-const Menu = () => (
-    <div>
-        
-    </div>
-);

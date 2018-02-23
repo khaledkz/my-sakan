@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './css/flatBrief.css'
-import apiClient from '../../helper/apiclient/apiClient';
 import SigleFlat from './SingleFlat';
 import { Link } from "react-router-dom";
 
