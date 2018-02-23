@@ -16,10 +16,7 @@ export default class FlatBrief extends Component {
 
   getSingleFlat=()=>{
     apiClient.GetSingleFlat(this.props.flatid).then((flat)=>{
-      console.log('ffffffffffffffffffffffff')
-      console.log(flat);
-      console.log('ffffffffffffffffffffffff')
- 
+      console.log(flat); 
       this.setState({
         singleFlat: true,
         flat: flat
@@ -36,11 +33,10 @@ export default class FlatBrief extends Component {
             <div className="briefDiscription">
 
               <h2>{this.props.title}</h2>
-              <h3>{this.props.price}</h3>
+              <h3>Price: ${this.props.price}</h3>
               <h3>{this.props.street} {this.props.flatNumber} {this.props.postCode} </h3>
               <h4>{this.props.briefDescription}</h4>
-              <h6>{this.props.description}</h6>
-              <button onClick={this.getSingleFlat}>Full Describtion</button>
+               <button onClick={this.getSingleFlat}>Full Describtion</button>
 
             </div>
           </div>
@@ -48,7 +44,7 @@ export default class FlatBrief extends Component {
       );
     } else {
       return(
-      < SigleFlat />)
+      < SigleFlat {...this.props} />)
     }
   }
 }
