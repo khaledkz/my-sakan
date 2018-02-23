@@ -22,10 +22,7 @@ export default class SingleFlat extends Component {
         }); 
     }
     render(){
-        if(this.state.flat.description){
-            console.log(this.state.flat.description.lettingInformation.dataAvailable)
-
-        }
+       
         if(this.state.flat.description){
         
           return(

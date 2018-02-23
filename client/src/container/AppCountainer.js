@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../component/home/Header';
 import Footer from '../component/home/Footer';
-import Menu from '../component/menu/Menu';
 import SearchSection from '../component/home/Search'
 import './css/AppCountainer.css'
 import { BrowserRouter as Router, Route } from "react-router-dom";

@@ -45,3 +45,11 @@
 .innerFirstPart >*{
     margin-top:8px;
 }
+
+.text-container{
+    padding: 6px;
+}
+
+.text-container >*{
+    margin-top:5px;
+}
