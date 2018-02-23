@@ -10,8 +10,7 @@ import React, { Component } from 'react';
 
           <div className="App-inside">
             <AppContainer/>
-            <SingleFlat/>
-        
+         
           </div>
        </div> 
   
