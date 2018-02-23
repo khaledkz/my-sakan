@@ -4,18 +4,25 @@ const SingleFlat = (props) => {
     return (
     <div class="singleFlatOuter">
       <div class="sigleFlatInner">
-        <h2> One BedRoom Flat </h2>
-        <h2>  Price:$550 </h2>
-        <h3> Address:Govan 8 Nimmo Drive </h3>
-         <p> 
-            Watch the sun set over the River Clyde in this lovely furnished 1 bedroom 
-            apartment with its own private balcony. Having just been repainted and new carpets
-            lay, this spacious and bright apartment comprises of lounge with adjoining sun room
-            with balcony door, fitted kitchen with all appliances included, bedroom with mirrored
-            wardrobes with access to the balcony 
-            and bathroom with shower overhead. </p>
-        <h3> Date Available:19/2/2018</h3>
-        <h3>  Deposit:500 </h3>
+        <h2> <span className="innerText">{props.title}.</span> </h2>
+        <h2> <span className="innerText">${props.price}.</span> </h2>
+        <h3> Address: <span className="innerText">{props.city} {props.street} {props.flatNumber} {props.postCode}.</span> </h3>
+
+          <h2>Letting Description:</h2>
+          <p>   
+              <h3> Date Available: <span className="innerText">{props.dataAvailable}.</span></h3>
+              <h3> Deposit: <span className="innerText">${props.deposit}.</span></h3>
+              <h3>furnishing: <span className="innerText">{props.furnishing}.</span></h3>
+              <h3>lettingType: <span className="innerText">{props.lettingType}.</span></h3>
+              <h3>reducedOnWebsite: <span className="innerText">{props.reducedOnWebsite}.</span></h3>
+          </p>
+           
+           <h2>Description:</h2>
+           <p> 
+              {props.description}
+           </p>
+        
+    
       </div>
      </div> 
     )
