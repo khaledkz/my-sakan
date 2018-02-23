@@ -19,7 +19,7 @@ export default class FlatBrief extends Component {
       console.log('ffffffffffffffffffffffff')
       console.log(flat);
       console.log('ffffffffffffffffffffffff')
-
+ 
       this.setState({
         singleFlat: true,
         flat: flat
@@ -27,7 +27,7 @@ export default class FlatBrief extends Component {
     });
   }
   render() {
-    if (this.state.singleFlat) {
+    if (!this.state.singleFlat) {
 
 
       return (
@@ -47,7 +47,8 @@ export default class FlatBrief extends Component {
         </div>
       );
     } else {
-      < SigleFlat />
+      return(
+      < SigleFlat />)
     }
   }
 }
