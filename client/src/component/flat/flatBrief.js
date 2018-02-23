@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './css/flatBrief.css'
 import apiClient from '../../helper/apiclient/apiClient';
 import SigleFlat from './SingleFlat';
+import { Link } from "react-router-dom";
 
 export default class FlatBrief extends Component {
 
@@ -14,30 +15,17 @@ export default class FlatBrief extends Component {
     }
   }
 
-  getSingleFlat=()=>{
-    apiClient.GetSingleFlat(this.props.flatid).then((flat)=>{
-      console.log(flat); 
-      this.setState({
-        singleFlat: true,
-        flat: flat
-      })
-    });
-  }
   render() {
     if (!this.state.singleFlat) {
-
-
       return (
         <div>
           <div className="briefDiscriptiona">
             <div className="briefDiscription">
-
-              <h2>{this.props.title}</h2>
-              <h3>Price: ${this.props.price}</h3>
-              <h3>{this.props.street} {this.props.flatNumber} {this.props.postCode} </h3>
-              <h4>{this.props.briefDescription}</h4>
-               <button onClick={this.getSingleFlat}>Full Describtion</button>
-
+                <h2>{this.props.title}</h2>
+                <h3>Price: ${this.props.price}</h3>
+                <h3>{this.props.street} {this.props.flatNumber} {this.props.postCode} </h3>
+                <h4>{this.props.briefDescription}</h4>
+                <Link to={`flat/${this.props.flatid}`}><button>Full Describtion</button></Link>                 
             </div>
           </div>
         </div>
