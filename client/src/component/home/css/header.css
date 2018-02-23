@@ -9,8 +9,10 @@
 header{
     display: flex;
     flex-direction: column;
-    background: rgb(224, 214, 210);
+    background: rgb(193, 202, 214);
 }
+/* background: rgb(186, 188, 190); */
+
 .header-first-part{
     padding: 15px;
     display: flex;
@@ -18,12 +20,16 @@ header{
      align-items: center;
      min-width: 190px;
 }
+.header-first-part h3{
+    font-size: 1.3em;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
 .header-first-part img{
      max-width: 100px;
     max-height: 50px;
 }
 .header-second-part{
-     background: rgb(190, 170, 161);
+    background: rgb(146, 152, 163);
 }
 .header-second-part ul{
     padding: 10px;
@@ -41,13 +47,14 @@ header{
 }
 .header-second-part li{
     color:white;
-    background: rgb(206, 114, 114);
+    background: rgb(41, 140, 153);
+
     padding: 10px;
     border-radius: 10px;
     
 }
 .header-second-part ul li:hover{
-    background: rgb(214, 147, 147);
+    background: rgb(105, 167, 175);
     cursor: pointer;
 
 }
@@ -59,8 +66,8 @@ header{
     .header-second-part ul{
         max-width: 30%;
         margin-left: 35%;
-         
-
-
+    }
+    .header-second-part li{
+        font-size: 1.3em;
     }
 }

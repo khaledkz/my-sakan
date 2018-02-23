@@ -20,10 +20,10 @@ export default class FlatBrief extends Component {
         <div>
           <div className="briefDiscriptiona">
             <div className="briefDiscription">
-                <h2>{this.props.title}</h2>
+                <h1>{this.props.title}</h1>
                 <h3>Price: ${this.props.price}</h3>
                 <h3>{this.props.street} {this.props.flatNumber} {this.props.postCode} </h3>
-                <h4>{this.props.briefDescription}</h4>
+                <p>{this.props.briefDescription}</p>
                 <Link to={`flat/${this.props.flatid}`}><button>Full Describtion</button></Link>                 
             </div>
           </div>
