@@ -4,6 +4,7 @@ import ApiClient from '../../helper/apiclient/apiClient';
 import FlatBrief from '../flat/flatBrief';
 
 export default class SearchSection extends Component {
+        
         constructor() {
                 super();
                 this.state = {
@@ -26,15 +27,15 @@ export default class SearchSection extends Component {
                 });
         }
         refreshPage = () => {
-                        this.setState({
-                                 
-                                title: 'khaled',
-                                selectedCountry: '',
-                                isCountrySelected: false,
-                                searchOption: '',
-                                isSearchOptionSelected: false,
-                                flats: []     
-                        })
+                this.setState({
+
+                        title: 'khaled',
+                        selectedCountry: '',
+                        isCountrySelected: false,
+                        searchOption: '',
+                        isSearchOptionSelected: false,
+                        flats: []
+                })
         }
         countrySelected = (event) => {
                 this.setState({
@@ -78,20 +79,10 @@ export default class SearchSection extends Component {
 
                                                 {this.state.flats.map((x, i) => (
                                                         <div key={i}>
-                                                                {/* Title:<h1>{x.description.title}</h1>
-                                                        City:<h2>{x.description.address.city}</h2>
-                                                        Flat number:<h2>{x.description.address.flatNumber}</h2>
-                                                        Post Code:<h2>{x.description.address.postCode}</h2>
-                                                        Street:<h2>{x.description.address.street}</h2>
-                                                        Option:<h3>{x.rentOrSale}</h3>
-                                                        letting information
-                                                        {x.description.lettingInformation.dataAvailable}
-                                                        {x.description.lettingInformation.deposit}
-                                                        {x.description.lettingInformation.price} 
-                                                        {x.description.lettingInformation.reducedOnWebsite} */}
-                                                                <FlatBrief flatid={x._id} briefDescription={x.briefDescription} description={x.description.fullDescription} postCode={x.description.address.postCode} flatNumber={x.description.address.flatNumber} street={x.description.address.street} title={x.description.title} 
-                                                                dataAvailable={x.description.lettingInformation.dataAvailable} price={x.description.lettingInformation.price} deposit={x.description.lettingInformation.deposit} furnishing={x.description.lettingInformation.furnishing}
-                                                                lettingType={x.description.lettingInformation.lettingType}  reducedOnWebsite={x.description.lettingInformation.reducedOnWebsite} city={x.description.address.city}/>
+
+                                                                <FlatBrief flatid={x._id} briefDescription={x.briefDescription} description={x.description.fullDescription} postCode={x.description.address.postCode} flatNumber={x.description.address.flatNumber} street={x.description.address.street} title={x.description.title}
+                                                                        dataAvailable={x.description.lettingInformation.dataAvailable} price={x.description.lettingInformation.price} deposit={x.description.lettingInformation.deposit} furnishing={x.description.lettingInformation.furnishing} city={x.description.address.city}
+                                                                        lettingType={x.description.lettingInformation.lettingType} reducedOnWebsite={x.description.lettingInformation.reducedOnWebsite} />
                                                         </div>
                                                 ))}
 
