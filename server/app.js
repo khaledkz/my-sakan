@@ -12,7 +12,7 @@ const flat= require('./routes/flat/flat');
 const country= require('./routes/country/country');
 const countryApi=require('./routes/api/countries/countries');
 const flatApi =require('./routes/api/flat/flat');
-
+const register = require('./routes/authentication/register/register');
 var app = express();
 app.use(cors());
 
@@ -34,7 +34,7 @@ app.use('/flat',flat);
 app.use('/country',country);
 app.use('/api/countries',countryApi)
 app.use('/api/flat',flatApi)
-
+app.use('/',register)
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
