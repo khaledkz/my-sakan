@@ -11,6 +11,12 @@ const ApiClient={
     },
     GetSingleFlat:(flatId)=>{
         return axios.get(`${apiUrl}/api/flat/${flatId}`)
+    },
+    PostCreateAccount:(username,password)=>{
+        return axios.post(`${apiUrl}/signup`,{
+            username:username,
+            password:password
+        })
     }
 }
 

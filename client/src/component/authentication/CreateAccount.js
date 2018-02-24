@@ -1,5 +1,5 @@
 import React,{Component}  from 'react';
- 
+import ApiClient from '../../helper/apiclient/apiClient'
  export default class CreateAccount extends Component {
 
     constructor() {
@@ -26,6 +26,13 @@ import React,{Component}  from 'react';
  
     submitAccount=()=>{
         console.log(this.state.password+" | "+this.state.username)
+        ApiClient.PostCreateAccount(this.state.username,this.state.password)
+        .then(response => {
+            console.log(response, 'Account Created!');
+          })
+          .catch(err => {
+            console.log(err, 'Account not added, try again');
+          });
     }
 
     render(){
