@@ -6,11 +6,7 @@ import AppContainer from './container/AppCountainer';
   render() {
     return (
        <div className="App">
-
-          <div className="App-inside">
-            <AppContainer/>
-         
-          </div>
+             <AppContainer/>
        </div> 
   
      );

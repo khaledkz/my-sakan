@@ -5,7 +5,7 @@ const Menu = () => (
     <div>
         <Link to="/">Home</Link>
         <Link to="/about">about</Link>
-        <Link to="/more">more</Link>
+        <Link to="/signup">register</Link>
         <Link to="/contact">contact</Link>
     </div>
 );
