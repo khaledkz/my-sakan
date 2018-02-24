@@ -1,5 +1,7 @@
 import React,{Component}  from 'react';
-import ApiClient from '../../helper/apiclient/apiClient'
+import ApiClient from '../../helper/apiclient/apiClient';
+import { Redirect } from 'react-router'
+
  export default class CreateAccount extends Component {
 
     constructor() {
@@ -8,7 +10,8 @@ import ApiClient from '../../helper/apiclient/apiClient'
         this.state = {
           username: '',
           password: '',
-          default:''
+          default:'',
+          pageRedirect:false
         }
       }
 
@@ -29,6 +32,9 @@ import ApiClient from '../../helper/apiclient/apiClient'
         ApiClient.PostCreateAccount(this.state.username,this.state.password)
         .then(response => {
             console.log(response, 'Account Created!');
+            this.setState({
+                pageRedirect:true
+            })
           })
           .catch(err => {
             console.log(err, 'Account not added, try again');
@@ -36,7 +42,8 @@ import ApiClient from '../../helper/apiclient/apiClient'
     }
 
     render(){
-        return(
+        if(!this.state.pageRedirect){
+            return(
                 <div >
 
                     <h1>Create New Account </h1>
@@ -49,6 +56,12 @@ import ApiClient from '../../helper/apiclient/apiClient'
         
                     <button onClick={this.submitAccount}>Create Account</button>
                 </div>
-        )   
+              ) 
+        }else{
+            return(
+            <Redirect to="/"/>
+            )
+        }
+          
     }
 }
