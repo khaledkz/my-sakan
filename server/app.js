@@ -5,7 +5,6 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-
 const index = require('./routes/index');
 const users = require('./routes/users');
 const flat= require('./routes/flat/flat');
@@ -13,6 +12,8 @@ const country= require('./routes/country/country');
 const countryApi=require('./routes/api/countries/countries');
 const flatApi =require('./routes/api/flat/flat');
 const register = require('./routes/authentication/register/register');
+const session = require("express-session");
+
 const app = express();
 app.use(cors());
 
@@ -21,7 +22,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
 const passport = require('passport')
-  , LocalStrategy = require('passport-local').Strategy;
+const LocalStrategy = require('passport-local').Strategy;
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -32,8 +33,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //use session and initalize passpost and session
-app.use(session({ secret: "cats" }));
-app.use(passport.initialize());
+ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/', index);
