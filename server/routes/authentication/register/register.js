@@ -47,7 +47,11 @@ router.get('/create-account', (req, res, next) => {
 
 router.post('/login',
       passport.authenticate('local', { 
-            successRedirect: '/',failureRedirect: '/login' })
+            successRedirect: '/',failureRedirect: '/login',failureFlash: true  }),
+      (req,res,next)=>{
+            res.redirect('/');
+      }
+      
 );
 
 router.post('/create-account', (req, res, next) => {
