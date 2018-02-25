@@ -42,15 +42,11 @@ passport.use(new LocalStrategy(
 passport.use(new FacebookStrategy({
       clientID: '2013185912235171',
       clientSecret: '03b2fd1c36fbcadc97793dcd64acac7e',
-      callbackURL: "http://localhost:4000/auth/facebook/callback",
-      profileFields: ['id', 'displayName', 'photos', 'emails']
- 
+      callbackURL: "http://localhost:4000/auth/facebook/callback" 
 },
        (accessToken, refreshToken, profile, done) =>{
-             console.log(profile)
-             let names=profile.displayName.trim();
-             console.log('name='+profile.displayName.trim().toString())
-             cb=(err,user)=>{
+      
+               cb=(err,user)=>{
                   if(err) throw err
                   if(user){
                         return done(null, user);
