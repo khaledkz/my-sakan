@@ -16,6 +16,16 @@ const accountClient={
         });
 
     },
+    saveFaceBookUser:(fbid,cb)=>{
+        query={facebookid:fbid}
+        account.create(query,cb);
+
+    },
+    findFaceBookUser:(fbid,cb)=>{
+        query={facebookid:fbid}
+        account.findOne(query,cb);
+
+    },
     findUser:(user,cb)=>{
         const query={username:user}
         account.findOne(query,cb)
@@ -29,6 +39,9 @@ const accountClient={
              callback(null,isMatch)
         }
         bcrypt.compare(firstPassword,secondPassword,(cb));
+    },
+     createOrFind:(query)=>{
+        User.findOrCreate(query,cb);
     }
 }
 
