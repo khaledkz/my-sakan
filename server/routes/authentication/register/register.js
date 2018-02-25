@@ -9,11 +9,12 @@ passport.use(new LocalStrategy(
       (username, password, done) => {
 
             cb = (err, user) => {
+                 console.log(user);
                   if (err) { return done(err); }
                   if (!user) {
                         return done(null, false, { message: 'Incorrect username.' });
                   }
-                  if (!user.validPassword(password)) {
+                  if (user.password!==password) {
                         return done(null, false, { message: 'Incorrect password.' });
                   }
                   return done(null, user);
@@ -24,12 +25,15 @@ passport.use(new LocalStrategy(
 ));
 
 passport.serializeUser(function (user, done) {
-      done(null, user.id);
+       done(null, user.id);
 });
 
 passport.deserializeUser((id, done) => {
+      console.log(id)
 
       cb = (err, user) => {
+            console.log(user)
+
             done(err, user);
       }
       AuthenticationDb.findSingleUser(id, cb);
@@ -47,18 +51,16 @@ router.get('/create-account', (req, res, next) => {
 
 router.post('/login',
       passport.authenticate('local', { 
-            successRedirect: '/',failureRedirect: '/login',failureFlash: true  })    
+      successRedirect: '/',failureRedirect: '/login',failureFlash: true  })    
 );
 
 router.post('/create-account', (req, res, next) => {
+      
       const query=req.body;
-
       cb=()=>{
             res.redirect('/');
       }
-
       AuthenticationDb.saveUser(query,cb); 
-
 })
 
 module.exports = router;
