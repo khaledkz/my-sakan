@@ -8,29 +8,39 @@
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
     crossorigin="anonymous">
 
+</head><!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel='stylesheet' href='/stylesheets/authentication.css' />
+  <title>{{title}}</title>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+    crossorigin="anonymous">
+
 </head>
 
 <body>
 
 
 <form method="post">
-    <div class="form-group has-success">
+    <div class="form-group has-success authentication-page">
 
         <label for="example-text-input text-success" class="col-12 col-form-label ">
-            <h3 class="text-danger ml-4">Welcome to My-sakan Website</h3>
-            <h 4class="text-danger ml-4">Login page:</h4>
+            <h3 class="text-danger ml-4 text-center">Welcome to My-sakan Website</h3>
+            <h4 class="text-danger ml-4 text-center">Login</h4>
         </label>
 
           <label for="example-text-input text-success " class="col-12 col-form-label">
-            <h4 class="text-primary pl-2">username:</h4>
+            <h4 class="text-primary pl-2 text-center">User Name:</h4>
           </label>
 
         <div class="col-lg-6 col-md-8 col-sm-9 col-xs-9 ">
-            <input class="form-control" type="text" name="username"  >
+            <input class="form-control " type="text" name="username"  >
         </div>
 
          <label for="example-text-input text-success " class="col-12 col-form-label">
-            <h4 class="text-primary pl-2">password:</h4>
+            <h4 class="text-primary pl-2 text-center">Password:</h4>
         </label>
 
         <div class="col-lg-6 col-md-8 col-sm-9 col-xs-9 ">
@@ -41,7 +51,7 @@
 
         <div class="col-lg-6 col-md-8 col-sm-9 col-xs-9 mt-3 ">
           <input class="btn btn-success btn-lg" type="button" value="Login">
-          <a href="/new-account"><input class="btn btn-success btn-lg" type="button" value="Register"></a>
+          <a href="/create-account"><input class="btn btn-success btn-lg" type="button" value="Register"></a>
         </div>
 
     </div>
@@ -58,3 +68,6 @@
 </body>
 
 </html>
+
+<body>
+ 
