@@ -1,3 +1,4 @@
+
 const ObjectId = require('mongodb').ObjectID;
 const account = require('../../models/acoounts')
 const bcrypt = require('bcrypt');
@@ -9,7 +10,7 @@ const accountClient={
             bcrypt.hash(query.password, salt, function(err, hash) {
                 // Store hash in your password DB.
                 query.password=hash;
-                 account.create(query).then(cb);
+                 account.create(query,cb);
 
             });
         });
@@ -21,6 +22,13 @@ const accountClient={
     },
     findSingleUser:(user,cb)=>{
         account.findById(user,cb);
+    },
+    comparePassword:(firstPassword,secondPassword,callback)=>{
+        cb=(err,isMatch)=>{
+            if (err) throw err;
+             callback(null,isMatch)
+        }
+        bcrypt.compare(firstPassword,secondPassword,(cb));
     }
 }
 

@@ -7,17 +7,23 @@ const LocalStrategy = require('passport-local').Strategy;
 passport.use(new LocalStrategy(
 
       (username, password, done) => {
-
-            cb = (err, user) => {
-                 console.log(user);
+             cb = (err, user) => {
+ 
                   if (err) { return done(err); }
                   if (!user) {
                         return done(null, false, { message: 'Incorrect username.' });
                   }
-                  if (user.password!==password) {
-                        return done(null, false, { message: 'Incorrect password.' });
+            
+                  cb=(err,isMatch)=>{
+
+                        if(err) throw err
+                        if(isMatch){
+                              return done(null, user);
+                        }else{
+                              return done(null, false, { message: 'Incorrect password.' });
+                        }
                   }
-                  return done(null, user);
+                  AuthenticationDb.comparePassword(password,user.password,cb)
             }
 
             AuthenticationDb.findUser(username, cb);
@@ -29,11 +35,8 @@ passport.serializeUser(function (user, done) {
 });
 
 passport.deserializeUser((id, done) => {
-      console.log(id)
-
+ 
       cb = (err, user) => {
-            console.log(user)
-
             done(err, user);
       }
       AuthenticationDb.findSingleUser(id, cb);
@@ -51,12 +54,13 @@ router.get('/create-account', (req, res, next) => {
 
 router.post('/login',
       passport.authenticate('local', { 
-      successRedirect: '/',failureRedirect: '/login',failureFlash: true  })    
+      successRedirect: '/',failureRedirect: '/login' })    
 );
 
 router.post('/create-account', (req, res, next) => {
-      
+
       const query=req.body;
+      
       cb=()=>{
             res.redirect('/');
       }
