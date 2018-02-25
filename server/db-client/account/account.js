@@ -6,10 +6,11 @@ const accountClient={
         account.create(query).then(cb);
     },
     findUser:(user,cb)=>{
-        account.findOne({username:user}).then(cb)
+        const query={username:user}
+        account.findOne(query,cb)
     },
     findSingleUser:(user,cb)=>{
-        account.findById(user).then(cb);
+        account.findById(user,cb);
     }
 }
 
