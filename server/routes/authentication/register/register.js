@@ -72,4 +72,9 @@ router.post('/create-account', (req, res, next) => {
       AuthenticationDb.saveUser(query,cb); 
 })
 
+router.get('/logout', function(req, res){
+      req.logout();
+      res.redirect('/');
+});
+
 module.exports = router;
