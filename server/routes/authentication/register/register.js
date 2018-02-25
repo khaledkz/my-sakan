@@ -7,13 +7,16 @@ const LocalStrategy = require('passport-local').Strategy;
 passport.use(new LocalStrategy(
 
       (username, password, done) => {
+
              cb = (err, user) => {
- 
+                  //step one check if there is err
                   if (err) { return done(err); }
+                  //step two check if there is user same user entered
                   if (!user) {
                         return done(null, false, { message: 'Incorrect username.' });
                   }
-            
+                  
+                  //step three check if the password is match 
                   cb=(err,isMatch)=>{
 
                         if(err) throw err
@@ -23,6 +26,7 @@ passport.use(new LocalStrategy(
                               return done(null, false, { message: 'Incorrect password.' });
                         }
                   }
+                  
                   AuthenticationDb.comparePassword(password,user.password,cb)
             }
 
