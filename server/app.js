@@ -33,13 +33,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //use session and initalize passpost and session
- app.use(passport.initialize());
+app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/', index);
-app.use('/users', users);
-app.use('/flat',flat);
-app.use('/country',country);
+app.use('/' , index);
+app.use('/users',ensureAuthenticated, users);
+app.use('/flat', ensureAuthenticated,flat);
+app.use('/country',ensureAuthenticated,country);
 app.use('/api/countries',countryApi)
 app.use('/api/flat',flatApi)
 app.use('/',register)
