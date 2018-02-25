@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const AuthenticationDb = require('../../../db-client/account/account')
+const AuthenticationDb = require('../../../db-client/account/account');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
 
 passport.use(new LocalStrategy(
 
@@ -16,6 +18,7 @@ passport.use(new LocalStrategy(
                   }
                   return done(null, user);
             }
+
             AuthenticationDb.findUser(username, cb);
       }
 ));
@@ -41,5 +44,21 @@ router.get('/login', (req, res, next) => {
 router.get('/create-account', (req, res, next) => {
       res.render('add-create-account', { layout: false });
 });
+
+router.post('/login',
+      passport.authenticate('local', { 
+            successRedirect: '/',failureRedirect: '/login' })
+);
+
+router.post('/create-account', (req, res, next) => {
+      const query=req.body;
+
+      cb=()=>{
+            res.redirect('/');
+      }
+
+      AuthenticationDb.saveUser(query,cb); 
+
+})
 
 module.exports = router;
