@@ -3,6 +3,7 @@ const router = express.Router();
 const AuthenticationDb = require('../../../db-client/account/account');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const bcrypt = require('bcrypt');
 
 passport.use(new LocalStrategy(
 
@@ -13,21 +14,21 @@ passport.use(new LocalStrategy(
                   if (err) { return done(err); }
                   //step two check if there is user same user entered
                   if (!user) {
-                        return done(null, false, { message: 'Incorrect username.' });
+                        return done(null, false);
                   }
-                  
                   //step three check if the password is match 
                   cb=(err,isMatch)=>{
 
                         if(err) throw err
+                        
                         if(isMatch){
                               return done(null, user);
                         }else{
-                              return done(null, false, { message: 'Incorrect password.' });
+                              return done(null, false);
                         }
                   }
-                  
-                  AuthenticationDb.comparePassword(password,user.password,cb)
+
+                  bcrypt.compare(password,user.password,cb);
             }
 
             AuthenticationDb.findUser(username, cb);
