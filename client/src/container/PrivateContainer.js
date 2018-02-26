@@ -53,7 +53,8 @@ class Login extends React.Component {
       password: '',
       default:'',
       pageRedirect:false,
-      redirectToReferrer: false
+      redirectToReferrer: false,
+      msg:''
 
     }
   }
@@ -83,12 +84,16 @@ handlePassword=(e)=>{
   // };
 
   login=()=>{
-    apiClient.PostCreateAccount(this.state.username,this.state.password)
-   .then(response => {
-       console.log(response);
-         fakeAuth.authenticate(() => {
-       this.setState({ redirectToReferrer: true });
-      });
+    apiClient.PostLogin(this.state.username,this.state.password).then(response => {
+        if(response.data.authenticated){
+          fakeAuth.authenticate(() => {
+            this.setState({ redirectToReferrer: true });
+           });
+        }else{
+          this.setState({msg:'Wrong Email or password',username: '',
+          password: '',})
+        }
+         
      })
      .catch(err => {
        console.log(err, 'Login Failred');
@@ -107,13 +112,16 @@ handlePassword=(e)=>{
 
     return (
       <div>
+        <h1>{this.state.msg}</h1>
         <p>You must log in to view the page at {from.pathname}</p>
 
         <h3>UserName </h3>
-        <input type="text" name="username" onChange={this.handleUserName} placeholder="username" />
+        <input type="text" name="username" onChange={this.handleUserName}  value={this.state.username}
+        ref="username" placeholder="username" />
 
         <h1>Password </h1>
-        <input type="password" name="password" onChange={this.handlePassword} placeholder="password" />
+        <input type="password" name="password" onChange={this.handlePassword} placeholder="password" 
+        value={this.state.password}  ref="password"/>
 
         <button onClick={this.submitAccount}>Create Account</button>
 
