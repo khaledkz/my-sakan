@@ -17,6 +17,12 @@ const ApiClient={
             username:username,
             password:password
         })
+    },
+    PostLogin:(username,password)=>{
+        return axios.post(`${apiUrl}/login`,{
+            username:username,
+            password:password
+        })
     }
 }
 
