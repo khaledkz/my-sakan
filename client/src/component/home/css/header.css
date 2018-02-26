@@ -64,8 +64,8 @@ header{
         min-height: 70px;
     }
     .header-second-part ul{
-        max-width: 30%;
-        margin-left: 35%;
+        max-width: 60%;
+        margin-left: 20%;
     }
     .header-second-part li{
         font-size: 1.3em;
