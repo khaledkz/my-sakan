@@ -28,8 +28,7 @@ import { Redirect } from 'react-router'
     }
  
     submitAccount=()=>{
-        console.log(this.state.password+" | "+this.state.username)
-        ApiClient.PostCreateAccount(this.state.username,this.state.password)
+         ApiClient.PostCreateAccount(this.state.username,this.state.password)
         .then(response => {
             console.log(response, 'Account Created!');
             this.setState({

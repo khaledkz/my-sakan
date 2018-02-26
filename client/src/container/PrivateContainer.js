@@ -7,21 +7,23 @@ import {
   withRouter
 } from "react-router-dom";
 
-import ReadMe from '../component/privateCom/readMe'
-import PriveateProfile from '../component/privateCom/PriveateProfile'
-import CreateAccount from '../component/authentication/CreateAccount'
+import ReadMe from '../component/privateCom/readMe';
+import PriveateProfile from '../component/privateCom/PriveateProfile';
+import CreateAccount from '../component/authentication/CreateAccount';
+import apiClient from '../helper/apiclient/apiClient';
+
 export default class PrivateContainer extends Component {
 
   constructor() {
     super();
     this.state = {
-     }
-  }   
+    }
+  }
 
   render() {
- 
+
     return (
-      
+
       <Router>
         <div>
           {this.state.sms}
@@ -32,7 +34,7 @@ export default class PrivateContainer extends Component {
           <Link to="/private-profile"><h1>Profile</h1></Link>
           <Route exact path="/raed-me" component={ReadMe} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/signup" component={CreateAccount}/>
+          <Route exact path="/signup" component={CreateAccount} />
           <PrivateRoute path="/private-profile" component={PriveateProfile} />
         </div>
       </Router>
@@ -42,15 +44,57 @@ export default class PrivateContainer extends Component {
 }
 
 class Login extends React.Component {
-  state = {
-    redirectToReferrer: false
-  };
 
-  login = () => {
-    fakeAuth.authenticate(() => {
-      this.setState({ redirectToReferrer: true });
-    });
-  };
+  constructor() {
+    super();
+
+    this.state = {
+      username: '',
+      password: '',
+      default:'',
+      pageRedirect:false,
+      redirectToReferrer: false
+
+    }
+  }
+
+handleUserName=(e)=>{
+    this.setState({
+        username:e.target.value
+    })
+}
+
+handlePassword=(e)=>{
+    this.setState({
+        password:e.target.value
+    })
+}
+
+
+  // state = {
+  //   redirectToReferrer: false
+
+  // };
+
+  // login = () => {
+  //   fakeAuth.authenticate(() => {
+  //     this.setState({ redirectToReferrer: true });
+  //   });
+  // };
+
+  login=()=>{
+    apiClient.PostCreateAccount(this.state.username,this.state.password)
+   .then(response => {
+       console.log(response);
+         fakeAuth.authenticate(() => {
+       this.setState({ redirectToReferrer: true });
+      });
+     })
+     .catch(err => {
+       console.log(err, 'Login Failred');
+     });
+}
+
 
   render() {
 
@@ -64,6 +108,15 @@ class Login extends React.Component {
     return (
       <div>
         <p>You must log in to view the page at {from.pathname}</p>
+
+        <h3>UserName </h3>
+        <input type="text" name="username" onChange={this.handleUserName} placeholder="username" />
+
+        <h1>Password </h1>
+        <input type="password" name="password" onChange={this.handlePassword} placeholder="password" />
+
+        <button onClick={this.submitAccount}>Create Account</button>
+
         <button onClick={this.login}>Log in</button>
 
         <p>or you need to register and join us</p>
@@ -93,13 +146,13 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
       fakeAuth.isAuthenticated ? (
         <Component {...props} />
       ) : (
-        <Redirect
-          to={{
-            pathname: "/login",
-            state: { from: props.location }
-          }}
-        />
-      )
+          <Redirect
+            to={{
+              pathname: "/login",
+              state: { from: props.location }
+            }}
+          />
+        )
     }
   />
 );
@@ -119,6 +172,6 @@ const AuthButton = withRouter(
         </button>
       </p>
     ) : (
-      <p>You are not logged in.</p>
-    )
+        <p>You are not logged in.</p>
+      )
 );
