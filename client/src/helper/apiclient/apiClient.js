@@ -19,7 +19,7 @@ const ApiClient={
         })
     },
     PostLogin:(username,password)=>{
-        return axios.post(`${apiUrl}/login`,{
+        return axios.post(`${apiUrl}/login/client-side`,{
             username:username,
             password:password
         })

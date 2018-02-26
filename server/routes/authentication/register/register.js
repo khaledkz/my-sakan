@@ -124,6 +124,33 @@ router.post('/login',
       })
 );
 
+router.post('/login/client-side', (req, res, next) => {
+      const query=req.body;
+      console.log(query)
+      cb = (err, user) => {
+            console.log(user)
+            //step one check if there is err
+            if (err) { res.json({authenticated:false}); }
+            //step two check if there is user same user entered
+            if (!user) {
+                  return res.json({authenticated:false});
+            }
+            //step three check if the password is match 
+            cb = (err, isMatch) => {
+                   if (err) res.json({authenticated:false});
+
+                  if (isMatch) {
+                        return  res.json({authenticated:true});
+                  } else {
+                        return  res.json({authenticated:false});
+                  }
+            }
+
+            bcrypt.compare(query.password, user.password, cb);
+      }
+       AuthenticationDb.findUser(query.username, cb);
+
+})
 router.post('/create-account', (req, res, next) => {
 
       const query = req.body;
