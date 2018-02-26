@@ -9,7 +9,6 @@ import About from '../component/cards/About';
 import Contact from '../component/cards/Contact';
 import More from '../component/cards/More';
 import CreateAccount from '../component/authentication/CreateAccount';
-import AuthExample from './auth'
 import PrivateContainer from './PrivateContainer';
 
 export default class AppContainer extends Component {
@@ -19,8 +18,7 @@ export default class AppContainer extends Component {
             <Router>
                 <div>
                     <Header />
-                    <Route path="/ath" component={AuthExample} />
-                    <Route exact path="/" component={SearchSection} />
+                     <Route exact path="/" component={SearchSection} />
                      <Route exact path="/signup" component={CreateAccount} />
                      <Route exact path="/contact" component={Contact} />
                      <Route exact path="/user-mangment" component={PrivateContainer} />
