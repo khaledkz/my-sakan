@@ -43,7 +43,7 @@ import { Redirect } from 'react-router'
     render(){
         if(!this.state.pageRedirect){
             return(
-                <div >
+                <div className="privateConta-row">
 
                     <h1>Create New Account </h1>
         
