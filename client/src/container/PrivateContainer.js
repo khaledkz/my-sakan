@@ -11,7 +11,7 @@ import ReadMe from '../component/privateCom/readMe';
 import PriveateProfile from '../component/privateCom/PriveateProfile';
 import CreateAccount from '../component/authentication/CreateAccount';
 import apiClient from '../helper/apiclient/apiClient';
-
+import './css/privateCounter.css'
 export default class PrivateContainer extends Component {
 
   constructor() {
@@ -25,7 +25,7 @@ export default class PrivateContainer extends Component {
     return (
 
       <Router>
-        <div>
+        <div class="privateConta">
           {this.state.sms}
           <h1> Welcome To User Mangment Page </h1>
           <AuthButton />
@@ -71,18 +71,6 @@ handlePassword=(e)=>{
     })
 }
 
-
-  // state = {
-  //   redirectToReferrer: false
-
-  // };
-
-  // login = () => {
-  //   fakeAuth.authenticate(() => {
-  //     this.setState({ redirectToReferrer: true });
-  //   });
-  // };
-
   login=()=>{
     apiClient.PostLogin(this.state.username,this.state.password).then(response => {
         if(response.data.authenticated){
@@ -111,9 +99,9 @@ handlePassword=(e)=>{
     }
 
     return (
-      <div>
+      <div class="privateConta">
         <h1>{this.state.msg}</h1>
-        <p>You must log in to view the page at {from.pathname}</p>
+        <p>You must log in/register to view the page at {from.pathname}</p>
 
         <h3>UserName </h3>
         <input type="text" name="username" onChange={this.handleUserName}  value={this.state.username}
@@ -122,14 +110,12 @@ handlePassword=(e)=>{
         <h1>Password </h1>
         <input type="password" name="password" onChange={this.handlePassword} placeholder="password" 
         value={this.state.password}  ref="password"/>
-
-        <button onClick={this.submitAccount}>Create Account</button>
+        <div class="privateConta-row">
+        <Link to="/signup"><button>register</button></Link>
 
         <button onClick={this.login}>Log in</button>
-
-        <p>or you need to register and join us</p>
-        <Link to="/signup"><button>register</button></Link>
-      </div>
+        </div>
+       </div>
     );
   }
 }
