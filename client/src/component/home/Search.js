@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './css/search.css'
 import ApiClient from '../../helper/apiclient/apiClient';
 import FlatBrief from '../flat/flatBrief';
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import CountryAction from '../../redux/actions/country';
 
 class SearchSection extends Component {
@@ -88,8 +88,8 @@ class SearchSection extends Component {
         }
 
         render() {
-                console.log(this.props.state)
-                if (this.state.isCountrySelected) {
+                console.log(this.props.Countrylist)
+                if (this.state.isCountrySelected ) {
                         if (this.state.isSearchOptionSelected) {
 
                                 return (
@@ -98,66 +98,77 @@ class SearchSection extends Component {
 
                                                 {this.state.flats.map((x, i) => (
                                                         <div key={i}>
-
                                                                 <FlatBrief flatid={x._id} briefDescription={x.briefDescription} description={x.description.fullDescription} postCode={x.description.address.postCode} flatNumber={x.description.address.flatNumber} street={x.description.address.street} title={x.description.title}
                                                                         dataAvailable={x.description.lettingInformation.dataAvailable} price={x.description.lettingInformation.price} deposit={x.description.lettingInformation.deposit} furnishing={x.description.lettingInformation.furnishing} city={x.description.address.city}
-                                                                        lettingType={x.description.lettingInformation.lettingType} reducedOnWebsite={x.description.lettingInformation.reducedOnWebsite} />
-                                                        </div>
+                                                                        lettingType={x.description.lettingInformation.lettingType} reducedOnWebsite={x.description.lettingInformation.reducedOnWebsite} />                                                        </div>
                                                 ))}
 
                                         </div>
                                 )
                         } else {
-                                return (
-                                        <div className="searchSectionOuter">
-                                                <div className="searchSection">
-
-                                                        <h3>{this.state.selectedCountryName} is Selected, you can select another country:</h3>
-
-                                                        <select onChange={this.countrySelected}>
-                                                                <option style={{ color: 'grey' }}>--{this.state.selectedCountryName}Selected--</option>
-                                                                {this.state.countries.map((x, i) => (
-
-                                                                        <option key={i} value={x._id}>{x.countryName} </option>
-                                                                ))}
-                                                        </select>
-
-                                                        <h3>Choose Search Option Rent/Solid:</h3>
-
-                                                        <div>
-                                                        </div>
-                                                        <div className="searchSection-buttons">
-                                                                <button onClick={this.searchToRent}>To Rent</button>
-                                                                <button onClick={this.searchForSale}>For Sale</button>
-                                                        </div>
-                                                        {this.state.searchOption}
-                                                </div> </div>
-                                )
+                                if(this.props.Countrylist){
+                                        return (
+                                                <div className="searchSectionOuter">
+                                                        <div className="searchSection">
+        
+                                                                <h3>{this.state.selectedCountryName} is Selected, you can select another country:</h3>
+        
+                                                                <select onChange={this.countrySelected}>
+                                                                        <option style={{ color: 'grey' }}>--{this.state.selectedCountryName}Selected--</option>
+                                                                        {this.props.Countrylist.map((x, i) => (
+        
+                                                                                <option key={i} value={x._id}>{x.countryName} </option>
+                                                                        ))}
+                                                                </select>
+        
+                                                                <h3>Choose Search Option Rent/Solid:</h3>
+        
+                                                                <div>
+                                                                </div>
+                                                                <div className="searchSection-buttons">
+                                                                        <button onClick={this.searchToRent}>To Rent</button>
+                                                                        <button onClick={this.searchForSale}>For Sale</button>
+                                                                </div>
+                                                                {this.state.searchOption}
+                                                        </div> </div>
+                                        )
+                                }else{
+                                        return 'loding'
+                                }
+                               
                         }
 
                 } else {
-                        return (
-                                <div className="searchSection">
-
-                                        <h3>Where do you want the flat? choose Country</h3>
-
-                                        <select onChange={this.countrySelected}>
-                                                <option style={{ color: 'grey' }}>--Select Country--</option>
-                                                {this.state.countries.map((x, i) => (
-
-                                                        <option key={i} value={x._id}>{x.countryName} </option>
-                                                ))}
-                                        </select>
-                                </div>
-                        );
+                        if(this.props.Countrylist){
+                                return (
+                                        <div className="searchSection">
+        
+                                                <h3>Where do you want the flat? choose Country</h3>
+        
+                                                <select onChange={this.countrySelected}>
+                                                        <option style={{ color: 'grey' }}>--Select Country--</option>
+                                                        {this.props.Countrylist.map((x, i) => (
+        
+                                                                <option key={i} value={x._id}>{x.countryName} </option>
+                                                        ))}
+                                                </select>
+                                        </div>
+                                );
+                        }else{
+                                return 'loding'
+                        }
+                       
                 }
         }
 }
 
-const stateToProos=(state)=>{
-        return  {
-                state:state
+const stateToProos = (state) => {
+        return {
+                state: state,
+                countries:state.country,
+                Countrylist:state.country.countries
+
         }
 }
 
-export default connect (stateToProos)(SearchSection);
+export default connect(stateToProos)(SearchSection);
