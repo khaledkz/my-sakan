@@ -3,6 +3,7 @@ import './css/search.css'
 import ApiClient from '../../helper/apiclient/apiClient';
 import FlatBrief from '../flat/flatBrief';
 import {connect} from 'react-redux'
+import CountryAction from '../../redux/actions/country';
 
 class SearchSection extends Component {
 
@@ -23,6 +24,7 @@ class SearchSection extends Component {
 
         componentDidMount() {
                 ApiClient.GetCountries().then((getContries) => {
+                        CountryAction.postCountries(getContries.data);
                         this.setState({
                                 countries: getContries.data
                         });
