@@ -9,6 +9,7 @@ const flat = new Schema({
     },
     briefDescription:String,
     rentOrSale:String,
+    postedBy:String,
     description:{   order:Number,
                     address:{
                         city:String,
