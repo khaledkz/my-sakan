@@ -4,6 +4,7 @@ import ApiClient from '../../helper/apiclient/apiClient';
 import FlatBrief from '../flat/flatBrief';
 import { connect } from 'react-redux'
 import CountryAction from '../../redux/actions/country';
+import FlatAction from '../../redux/actions/flat';
 
 class SearchSection extends Component {
 
@@ -65,6 +66,7 @@ class SearchSection extends Component {
         searchToRent = () => {
                 ApiClient.GetFlatCountryAndRentOrSale(this.state.selectedCountry, 'rent').then((getFlats) => {
                         console.log(getFlats)
+                        FlatAction.postFlat(getFlats.data)
                         this.setState({
                                 isSearchOptionSelected: true,
                                 flats: getFlats.data
@@ -77,6 +79,7 @@ class SearchSection extends Component {
         }
         searchForSale = () => {
                 ApiClient.GetFlatCountryAndRentOrSale(this.state.selectedCountry, 'sale').then((getFlats) => {
+                        FlatAction.postFlat(getFlats.data)
                         this.setState({
                                 isSearchOptionSelected: true,
                                 flats: getFlats.data
@@ -88,15 +91,15 @@ class SearchSection extends Component {
         }
 
         render() {
-                console.log(this.props.Countrylist)
+            
                 if (this.state.isCountrySelected ) {
                         if (this.state.isSearchOptionSelected) {
-
-                                return (
+                                if(this.props.flats){
+                                 return (
                                         <div className="searchSection">
                                                 <button className='newSearchBtn' onClick={this.refreshPage}>New Search</button>
 
-                                                {this.state.flats.map((x, i) => (
+                                                {this.props.flats.map((x, i) => (
                                                         <div key={i}>
                                                                 <FlatBrief flatid={x._id} briefDescription={x.briefDescription} description={x.description.fullDescription} postCode={x.description.address.postCode} flatNumber={x.description.address.flatNumber} street={x.description.address.street} title={x.description.title}
                                                                         dataAvailable={x.description.lettingInformation.dataAvailable} price={x.description.lettingInformation.price} deposit={x.description.lettingInformation.deposit} furnishing={x.description.lettingInformation.furnishing} city={x.description.address.city}
@@ -104,7 +107,9 @@ class SearchSection extends Component {
                                                 ))}
 
                                         </div>
-                                )
+                                )}else{
+                                        return('looding')
+                                } 
                         } else {
                                 if(this.props.Countrylist){
                                         return (
@@ -164,10 +169,9 @@ class SearchSection extends Component {
 
 const stateToProos = (state) => {
         return {
-                state: state,
-                countries:state.country,
-                Countrylist:state.country.countries
-
+                flats:state.flats.flats,
+                 countries:state.country,
+                Countrylist:state.country.countries,
         }
 }
 
