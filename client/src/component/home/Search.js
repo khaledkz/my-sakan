@@ -65,8 +65,7 @@ class SearchSection extends Component {
 
         searchToRent = () => {
                 ApiClient.GetFlatCountryAndRentOrSale(this.state.selectedCountry, 'rent').then((getFlats) => {
-                        console.log(getFlats)
-                        FlatAction.postFlat(getFlats.data)
+                         FlatAction.postFlat(getFlats.data)
                         this.setState({
                                 isSearchOptionSelected: true,
                                 flats: getFlats.data
