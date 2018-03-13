@@ -7,9 +7,12 @@ let UserAthentication ={
     },
     FaildAuthen:(user)=>{
         store.dispatch({type:'Faild_Authe',user});
+    },
+    ResetAuthen:(user)=>{
+        store.dispatch({type:'Reset_Authe'});
     }
     
-    
+     
 }
 
 export default UserAthentication;

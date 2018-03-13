@@ -11,8 +11,9 @@ import ReadMe from '../component/privateCom/readMe';
 import PriveateProfile from '../component/privateCom/PriveateProfile';
 import CreateAccount from '../component/authentication/CreateAccount';
 import apiClient from '../helper/apiclient/apiClient';
-import './css/privateCounter.css'
-import {connect} from 'react-redux'
+import './css/privateCounter.css';
+import {connect} from 'react-redux';
+import authenticationAction from '../redux/actions/userAuthentication';
 
 class PrivateContainer extends Component {
 
@@ -78,9 +79,11 @@ class Login extends React.Component {
       console.log(response.data.user)
       if (response.data.authenticated) {
         fakeAuth.authenticate(() => {
+          authenticationAction.SuccessAuthen(response.data.user);
           this.setState({ redirectToReferrer: true });
         });
       } else {
+        authenticationAction.FaildAuthen('');
         this.setState({
           msg: 'Wrong Email or password', username: '',
           password: '',
@@ -164,7 +167,8 @@ const AuthButton = withRouter(
         Welcome!{" "}
         <button
           onClick={() => {
-            fakeAuth.signout(() => history.push("/"));
+              authenticationAction.ResetAuthen();
+               fakeAuth.signout(() => history.push("/"));
           }}
         >
           Sign out
