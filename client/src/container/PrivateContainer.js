@@ -12,7 +12,9 @@ import PriveateProfile from '../component/privateCom/PriveateProfile';
 import CreateAccount from '../component/authentication/CreateAccount';
 import apiClient from '../helper/apiclient/apiClient';
 import './css/privateCounter.css'
-export default class PrivateContainer extends Component {
+import {connect} from 'react-redux'
+
+class PrivateContainer extends Component {
 
   constructor() {
     super();
@@ -21,7 +23,7 @@ export default class PrivateContainer extends Component {
   }
 
   render() {
-
+    console.log(this.props.userAuthentication)
     return (
 
       <Router>
@@ -172,3 +174,9 @@ const AuthButton = withRouter(
         <p>You are not logged in.</p>
       )
 );
+
+const stateToProps=(state)=>{
+ return {userAuthentication:state.userAuthentication}
+}
+
+export default connect(stateToProps)(PrivateContainer);
