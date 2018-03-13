@@ -1,5 +1,6 @@
 class Login extends React.Component {
-    state = {
+ 
+  state = {
       redirectToReferrer: false
     };
   

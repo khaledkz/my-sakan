@@ -51,42 +51,45 @@ class Login extends React.Component {
     this.state = {
       username: '',
       password: '',
-      default:'',
-      pageRedirect:false,
+      default: '',
+      pageRedirect: false,
       redirectToReferrer: false,
-      msg:''
+      msg: ''
 
     }
   }
 
-handleUserName=(e)=>{
+  handleUserName = (e) => {
     this.setState({
-        username:e.target.value
+      username: e.target.value
     })
-}
+  }
 
-handlePassword=(e)=>{
+  handlePassword = (e) => {
     this.setState({
-        password:e.target.value
+      password: e.target.value
     })
-}
+  }
 
-  login=()=>{
-    apiClient.PostLogin(this.state.username,this.state.password).then(response => {
-        if(response.data.authenticated){
-          fakeAuth.authenticate(() => {
-            this.setState({ redirectToReferrer: true });
-           });
-        }else{
-          this.setState({msg:'Wrong Email or password',username: '',
-          password: '',})
-        }
-         
-     })
-     .catch(err => {
-       console.log(err, 'Login Failred');
-     });
-}
+  login = () => {
+    apiClient.PostLogin(this.state.username, this.state.password).then(response => {
+      console.log(response.data.user)
+      if (response.data.authenticated) {
+        fakeAuth.authenticate(() => {
+          this.setState({ redirectToReferrer: true });
+        });
+      } else {
+        this.setState({
+          msg: 'Wrong Email or password', username: '',
+          password: '',
+        })
+      }
+
+    })
+      .catch(err => {
+        console.log(err, 'Login Failred');
+      });
+  }
 
 
   render() {
@@ -104,18 +107,18 @@ handlePassword=(e)=>{
         <p>You must log in/register to view the page at {from.pathname}</p>
 
         <h3>UserName </h3>
-        <input type="text" name="username" onChange={this.handleUserName}  value={this.state.username}
-        ref="username" placeholder="username" />
+        <input type="text" name="username" onChange={this.handleUserName} value={this.state.username}
+          ref="username" placeholder="username" />
 
         <h1>Password </h1>
-        <input type="password" name="password" onChange={this.handlePassword} placeholder="password" 
-        value={this.state.password}  ref="password"/>
+        <input type="password" name="password" onChange={this.handlePassword} placeholder="password"
+          value={this.state.password} ref="password" />
         <div class="privateConta-row">
-        <Link to="/signup"><button>register</button></Link>
+          <Link to="/signup"><button>register</button></Link>
 
-        <button onClick={this.login}>Log in</button>
+          <button onClick={this.login}>Log in</button>
         </div>
-       </div>
+      </div>
     );
   }
 }

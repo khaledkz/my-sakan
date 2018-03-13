@@ -125,10 +125,8 @@ router.post('/login',
 );
 
 router.post('/login/client-side', (req, res, next) => {
-      const query=req.body;
-      console.log(query)
-      cb = (err, user) => {
-            console.log(user)
+       const query=req.body;
+       cb = (err, user) => {
             //step one check if there is err
             if (err) { res.json({authenticated:false}); }
             //step two check if there is user same user entered
@@ -140,7 +138,9 @@ router.post('/login/client-side', (req, res, next) => {
                    if (err) res.json({authenticated:false});
 
                   if (isMatch) {
-                        return  res.json({authenticated:true});
+                        return  res.json({authenticated:true,user:{id:user._id,
+                              username:user.username}
+                  });
                   } else {
                         return  res.json({authenticated:false});
                   }
