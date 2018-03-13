@@ -4,11 +4,13 @@ const Contrey = require('./Country');
 
 const flat = new Schema({
     country:{
-        type:mongoose.Schema.Types.ObjectId,
+        type:mongoose.Schema.Types.ObjectId||String,
         ref:'CountryId'
     },
     briefDescription:String,
     rentOrSale:String,
+    postedBy:{ref:'userId',type:mongoose.Schema.Types.ObjectId},
+    postedByFbUser:String,
     description:{   order:Number,
                     address:{
                         city:String,
