@@ -5,10 +5,8 @@ const countryClient = require('../../db-client/country/country');
 const {ObjectId}=require('mongodb');
 
 router.get('/add', function (req, res, next) {
-
-      cb = (countries) => {
-            console.log(countries[0].order);
-            res.render('flat-add', {
+        cb = (countries) => {
+             res.render('flat-add', {
                   countries
             })
       }
@@ -152,8 +150,7 @@ router.post('/add', (req, res, next) => {
 
 
       let newQuery = {
-
-            country: query.country,
+             country: query.country,
             rentOrSale: query.rentOrSale,
             briefDescription:query.briefDescription,
             description: {
@@ -176,6 +173,16 @@ router.post('/add', (req, res, next) => {
                   fullDescription: query.fullDescription
             }
       };
+
+      
+      if(req.user.facebookid){
+            newQuery.postedByFbUser=req.user.facebookid;
+ 
+      }else{
+            newQuery.postedBy=req.user.id;
+ 
+      }
+      console.log(newQuery)
 
       const cb = () => {
             res.redirect('/')
