@@ -1,0 +1,35 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+.privateAccount ul{
+    background: rgb(22, 21, 21);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 7px;
+    border:solid 1px rgb(20, 16, 16);
+    border-radius: 5px;
+ }
+
+.privateAccount ul li{
+    list-style: none;
+    font-size: 1.1em;
+    text-align: center;
+}
+
+.privateAccount ul a{
+    background: rgb(59, 59, 59);
+    color:white;
+    text-align: center;
+    border:solid 1px rgb(224, 219, 219);
+    padding: 6px;
+    border-radius: 5px;
+}
+.privateAccount ul a:hover{
+    background: rgb(34, 34, 34);
+    color:rgb(223, 208, 208);
+
+}
