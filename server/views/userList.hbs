@@ -1,0 +1,27 @@
+
+<table class="table bg-info table-bordered">
+  <thead class="table bg-danger">
+    <tr>
+      <th>#</th>
+      <th>Title</th>
+      <th>City</th>
+      <th>price</th>
+      <th>Rent/Sale</th>
+      <th>View</th>
+     </tr>
+  </thead>
+  <tbody>
+ 
+     {{#each users}}
+    <tr>
+              <th scope="row">{{this.username}}</th>
+              <td>{{this.firstName}}</td>
+              <td>{{this.lastName}}</td>
+              <td>{{this.country}}</td>
+              <td>{{this.phoneNumber}}</td>
+              <td><a href="/users/view/{{this._id}}"><button class="btn btn-danger">View</button></a></td>
+      </tr> 
+     {{/each}}
+     
+  </tbody>
+</table>
