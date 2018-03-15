@@ -2,17 +2,22 @@
     margin:0;
     padding:0;
 }
-
+.privateAccount {
+ width:100%
+}
 .privateAccount ul{
-    background: rgb(22, 21, 21);
+    background: rgb(112, 104, 104);
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     padding: 7px;
     border:solid 1px rgb(20, 16, 16);
     border-radius: 5px;
- }
+  }
+  .privateAccount ul>*{
+      margin-right: 22px;
+  }
 
 .privateAccount ul li{
     list-style: none;
@@ -32,4 +37,20 @@
     background: rgb(34, 34, 34);
     color:rgb(223, 208, 208);
 
+}
+
+@media (min-width:680px){
+    .privateAccount {
+      
+     }
+    .privateAccount ul{
+       
+     }
+ }
+
+@media (min-width:980px){
+    .privateAccount {
+         
+
+       }
 }
