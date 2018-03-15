@@ -5,6 +5,10 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
 const FacebookStrategy = require('passport-facebook').Strategy;
+const CountriesJson = require('../../../data/countries.json');
+const yearsJson=require('../../../data/years.json')
+const monthsJson=require('../../../data/month.json');
+
 passport.use(new LocalStrategy(
 
       (username, password, done) => {
@@ -115,7 +119,7 @@ router.get('/login', (req, res, next) => {
 });
 
 router.get('/create-account', (req, res, next) => {
-      res.render('add-create-account', { layout: false });
+       res.render('add-create-account', { layout: false,CountriesJson,yearsJson,monthsJson });
 });
 
 router.post('/login',
@@ -153,11 +157,17 @@ router.post('/login/client-side', (req, res, next) => {
 })
 router.post('/create-account', (req, res, next) => {
 
-      const query = req.body;
+      let query = req.body;
 
-      cb = () => {
+      query.dateOfBirth={
+            day:query.day,
+            month:query.month,
+            year:query.year
+      }
+       cb = () => {
             res.redirect('/');
       }
+ 
       AuthenticationDb.saveUser(query, cb);
 })
 
