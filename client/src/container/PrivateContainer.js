@@ -12,8 +12,11 @@ import PriveateProfile from '../component/privateCom/PriveateProfile';
 import CreateAccount from '../component/authentication/CreateAccount';
 import apiClient from '../helper/apiclient/apiClient';
 import './css/privateCounter.css';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import authenticationAction from '../redux/actions/userAuthentication';
+import UserList from '../component/user/list';
+import Account from '../component/user/account';
+import Profile from '../component/user/profile';
 
 class PrivateContainer extends Component {
 
@@ -28,17 +31,24 @@ class PrivateContainer extends Component {
     return (
 
       <Router>
-        <div class="privateConta">
-          {this.state.sms}
-          <h1> Welcome To User Mangment Page </h1>
-          <AuthButton />
+        <div className="privateConta">
 
-          <Link to="/raed-me"><h1>Read Me</h1></Link>
-          <Link to="/private-profile"><h1>Profile</h1></Link>
+          <div className="user-container">
+            {this.state.sms} <AuthButton />
+            <div className="readMe-andProfile">
+              <Link to="/raed-me"><h1>Read Me</h1></Link>
+              <Link to="/private-profile"><h1>User</h1></Link>
+            </div>
+          </div>
+
           <Route exact path="/raed-me" component={ReadMe} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={CreateAccount} />
           <PrivateRoute path="/private-profile" component={PriveateProfile} />
+          <Route exact path="/private-user/list" component={UserList} />
+          <Route exact path="/private-user/profile" component={Profile} />
+          <Route exact path="/private-user/account" component={Account} />
+
         </div>
       </Router>
 
@@ -163,24 +173,26 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 const AuthButton = withRouter(
   ({ history }) =>
     fakeAuth.isAuthenticated ? (
-      <p>
+      <div className="welcom-login">
         Welcome!{" "}
         <button
           onClick={() => {
-              authenticationAction.ResetAuthen();
-               fakeAuth.signout(() => history.push("/"));
+            authenticationAction.ResetAuthen();
+            fakeAuth.signout(() => history.push("/"));
           }}
         >
           Sign out
         </button>
-      </p>
+      </div>
     ) : (
-        <p>You are not logged in.</p>
+        <div className="welcom-login">
+          <p>You are not logged in.</p>
+        </div>
       )
 );
 
-const stateToProps=(state)=>{
- return {userAuthentication:state.userAuthentication}
+const stateToProps = (state) => {
+  return { userAuthentication: state.userAuthentication }
 }
 
 export default connect(stateToProps)(PrivateContainer);

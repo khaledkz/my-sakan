@@ -10,7 +10,7 @@ import Contact from '../component/cards/Contact';
 import More from '../component/cards/More';
 import CreateAccount from '../component/authentication/CreateAccount';
 import PrivateContainer from './PrivateContainer';
-
+ 
 export default class AppContainer extends Component {
 
     render() {
@@ -18,12 +18,13 @@ export default class AppContainer extends Component {
             <Router>
                 <div>
                     <Header />
-                        <Route exact path="/" component={SearchSection} />
-                        <Route exact path="/signup" component={CreateAccount} />
-                        <Route exact path="/contact" component={Contact} />
-                        <Route exact path="/user-mangment" component={PrivateContainer} />
-                        <Route exact path="/flat/:flatId" component={SingleFlat} />
-                     <Footer />
+
+                     <Route exact path="/" component={SearchSection} />
+                    <Route exact path="/signup" component={CreateAccount} />
+                    <Route exact path="/contact" component={Contact} />
+                    <Route exact path="/user-mangment" component={PrivateContainer} />
+                    <Route exact path="/flat/:flatId" component={SingleFlat} />
+                    <Footer />
 
 
                 </div>

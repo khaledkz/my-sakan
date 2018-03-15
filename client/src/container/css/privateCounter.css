@@ -18,3 +18,22 @@
 .privateConta>*{
     padding:5px;
 }
+
+.welcom-login{
+    float: right;
+}
+.readMe-andProfile{
+    display: flex;
+    flex-direction: row;
+     justify-content: flex-end;
+     
+
+}
+.readMe-andProfile >*{
+    margin-right:10px
+}
+
+.user-container{
+    background: rgb(124, 121, 121);
+    width:100%;
+}
