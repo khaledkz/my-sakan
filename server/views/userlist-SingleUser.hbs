@@ -1,0 +1,24 @@
+<div class="container">
+        <h3 class="text-danger">User Information</h3>
+        <div class="container">
+                <h4 class="text-info">UserName:</h4>
+                <h5>{{user.username}}</h5>
+                <h4 class="text-info">First Name</h4>
+                <h5>{{user.firstName}}</h5>
+                <h4 class="text-info">Last Name</h4>
+                <h5>{{user.lastName}}</h5>
+                <h4 class="text-info">Country</h4>
+                <h5>{{user.country}}</h5>
+                <h4 class="text-info">Phone Number</h4>
+                <h5>{{user.phoneNumber}}</h5>
+
+        </div>
+        <div>
+                <a href="{{user._id}}/update">
+                        <button class="btn btn-danger">Update</button>
+                </a>
+                <a href="{{user._id}}/delete">
+                        <button class="btn btn-danger">Delete</button>
+                </a>
+        </div>
+</div>

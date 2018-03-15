@@ -33,6 +33,9 @@ const accountClient={
     findSingleUser:(user,cb)=>{
         account.findById(user,cb);
     },
+    getSingleUser:(user,cb)=>{
+        account.findById(user).then(cb);
+    },
     comparePassword:(firstPassword,secondPassword,callback)=>{
         cb=(err,isMatch)=>{
             if (err) throw err;
@@ -40,8 +43,8 @@ const accountClient={
         }
         bcrypt.compare(firstPassword,secondPassword,(cb));
     },
-     createOrFind:(query)=>{
-        User.findOrCreate(query,cb);
+    findAllUsers:(cb)=>{
+        account.find({}).then(cb)
     }
 }
 
