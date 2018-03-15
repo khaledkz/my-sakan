@@ -33,7 +33,7 @@
       </label>
 
       <label for="example-text-input text-success " class="col-12 col-form-label">
-        <h4 class="text-primary pl-2 text-center">username:</h4>
+        <h4 class="text-primary pl-2 text-center">Username:</h4>
       </label>
 
       <div class="col-lg-6 col-md-8 col-sm-9 col-xs-9 ">
@@ -41,7 +41,7 @@
       </div>
 
       <label for="example-text-input text-success " class="col-12 col-form-label">
-        <h4 class="text-primary pl-2 text-center">password:</h4>
+        <h4 class="text-primary pl-2 text-center">Password:</h4>
       </label>
 
       <div class="col-lg-6 col-md-8 col-sm-9 col-xs-9 ">
@@ -50,15 +50,15 @@
 
 
       <label for="example-text-input text-success " class="col-12 col-form-label">
-        <h4 class="text-primary pl-2 text-center">confirm password:</h4>
+        <h4 class="text-primary pl-2 text-center">Confirm password:</h4>
       </label>
 
       <div class="col-lg-6 col-md-8 col-sm-9 col-xs-9 ">
-        <input class="form-control" type="password" name="confirm-password">
+        <input class="form-control" type="password" name="confirmPassword">
       </div>
 
       <label for="example-text-input text-success " class="col-12 col-form-label">
-        <h4 class="text-primary pl-2 text-center">first name:</h4>
+        <h4 class="text-primary pl-2 text-center">First name:</h4>
       </label>
 
       <div class="col-lg-6 col-md-8 col-sm-9 col-xs-9 ">
@@ -66,33 +66,69 @@
       </div>
 
       <label for="example-text-input text-success " class="col-12 col-form-label">
-        <h4 class="text-primary pl-2 text-center">last name:</h4>
+        <h4 class="text-primary pl-2 text-center">Last name:</h4>
       </label>
 
       <div class="col-lg-6 col-md-8 col-sm-9 col-xs-9 ">
         <input class="form-control " type="text" name="lastName">
       </div>
 
-
       <label for="example-text-input text-success " class="col-12 col-form-label">
-        <h4 class="text-primary pl-2 text-center">country:</h4>
+        <h4 class="text-primary pl-2 text-center">Country:</h4>
       </label>
 
       <div class="col-lg-6 col-md-8 col-sm-9 col-xs-9 ">
-        <input class="form-control " type="text" name="country">
+        <select class="form-control" name="country">
+          <option disabled selected value> -- Select Country -- </option>
+          {{#each CountriesJson}}
+          <option value={{this.code}}>{{this.name}}</option>
+          {{/each}}
+
+        </select>
       </div>
 
 
       <label for="example-text-input text-success " class="col-12 col-form-label">
-        <h4 class="text-primary pl-2 text-center">phoneNumber:</h4>
+        <h4 class="text-primary pl-2 text-center">Date of Birth:</h4>
       </label>
 
       <div class="col-lg-6 col-md-8 col-sm-9 col-xs-9 ">
-        <input class="form-control " type="text" name="phoneNumber">
+
+        <select class="form-control"  name="year">
+          <option disabled selected value> Year </option>
+          {{#each yearsJson}}
+            <option type="number" value={{this.year}}>{{this.year}}</option>
+          {{/each}}
+        </select>
+
+         <select  class="form-control" name="month">
+          <option disabled selected value> Month </option>
+          {{#each monthsJson}}
+            <option type="number" value={{this.number}}>{{this.name}}</option>
+          {{/each}}
+        </select>
+
+
+
+ 
+        <input class="form-control" type="number" name="day" placeholder="day">
       </div>
 
+
+
+
       <label for="example-text-input text-success " class="col-12 col-form-label">
-        <h4 class="text-primary pl-2 text-center">emailAddress:</h4>
+        <h4 class="text-primary pl-2 text-center">Phone Number:</h4>
+      </label>
+
+      <div class="col-lg-6 col-md-8 col-sm-9 col-xs-9 ">
+        <input class="form-control " type="number" name="phoneNumber">
+      </div>
+
+
+
+      <label for="example-text-input text-success " class="col-12 col-form-label">
+        <h4 class="text-primary pl-2 text-center">Email Address:</h4>
       </label>
 
       <div class="col-lg-6 col-md-8 col-sm-9 col-xs-9 ">
