@@ -38,4 +38,29 @@ router.get('/delete/:userID',(req,res)=>{
 
 })
 
+router.get('/update/:userID',(req,res)=>{
+    let {userID} = req.params;
+
+     cb=(data)=>{
+        res.render('userlist-update-single-user',{
+            user:data
+        })
+    }
+    
+    accounts.getSingleUser(userID,cb)
+})
+
+
+router.post('/update/:userId',(req,res)=>{
+    let {userId} = req.params;
+    let query = req.body;
+    console.log(1)
+
+     cb=()=>{
+         console.log(2)
+        res.redirect('/users')
+    }
+    
+    accounts.updateSingleUser(userId,query,cb)
+})
 module.exports = router;

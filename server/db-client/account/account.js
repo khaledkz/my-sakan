@@ -48,6 +48,10 @@ const accountClient={
     },
      deleteSingleUser:(userId,cb)=>{
         account.remove({_id:ObjectId(userId)}).then(cb);
+    },
+     updateSingleUser:(userId,query,cb)=>{
+         console.log(query)
+        account.update({_id:ObjectId(userId)},{$set:query}).then(cb);
     }
 }
 
