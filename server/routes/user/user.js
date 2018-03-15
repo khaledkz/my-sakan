@@ -25,4 +25,17 @@ router.get('/view/:userId',(req,res)=>{
     accounts.getSingleUser(userId,cb)
 
 })
+
+router.get('/delete/:userID',(req,res)=>{
+    let {userID} = req.params;
+
+    let  cb=(data)=>{
+        res.redirect('/users')
+    }
+   
+   accounts.deleteSingleUser(userID,cb)
+
+
+})
+
 module.exports = router;

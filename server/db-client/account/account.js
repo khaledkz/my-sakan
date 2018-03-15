@@ -2,7 +2,7 @@
 const ObjectId = require('mongodb').ObjectID;
 const account = require('../../models/account')
 const bcrypt = require('bcrypt');
-
+ 
 const accountClient={
     saveUser:(query)=>{
          const saltRounds=10;
@@ -45,6 +45,9 @@ const accountClient={
     },
     findAllUsers:(cb)=>{
         account.find({}).then(cb)
+    },
+     deleteSingleUser:(userId,cb)=>{
+        account.remove({_id:ObjectId(userId)}).then(cb);
     }
 }
 
