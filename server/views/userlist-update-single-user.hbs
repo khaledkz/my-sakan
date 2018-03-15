@@ -1,0 +1,37 @@
+<form method="post">
+    <div class="form-group has-success">
+        <label for="example-text-input text-success" class="col-12 col-form-label ">
+            <h3 class="text-danger ml-4">Edit User</h3>
+        </label>
+
+          <label for="example-text-input text-success " class="col-12 col-form-label">
+            <h4 class="text-primary pl-2">User Name:</h4>
+          </label>
+
+        <div class="col-lg-6 col-md-8 col-sm-9 col-xs-9 ">
+             
+             <input placeholder="{{user.username}}" value="{{user.username}}" class="form-control" type="text" name="username" id="example-text-input">
+        </div>
+
+         <label for="example-text-input text-success " class="col-12 col-form-label">
+            <h4 class="text-primary pl-2">First Name:</h4>
+        </label>
+
+        <div class="col-lg-6 col-md-8 col-sm-9 col-xs-9 ">
+            <input placeholder="{{user.firstName}}" value="{{user.firstName}}" class="form-control" type="text" name="firstName" id="example-text-input">
+        </div>
+
+        <label for="example-text-input text-success " class="col-12 col-form-label">
+            <h4 class="text-primary pl-2">Last Name:</h4>
+        </label>
+
+        <div class="col-lg-6 col-md-8 col-sm-9 col-xs-9 ">
+            <input placeholder="{{user.lastName}}" class="form-control" type="text" name="lastName" id="example-text-input" value="{{user.lastName}}">
+        </div>
+
+        <div class="col-lg-6 col-md-8 col-sm-9 col-xs-9 mt-3 ">
+          <input class="btn btn-success btn-lg" type="submit" value="Submit">
+        </div>
+
+    </div>
+</form>
