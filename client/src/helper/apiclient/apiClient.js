@@ -23,6 +23,11 @@ const ApiClient={
             username:username,
             password:password
         })
+    },
+    getUserProfile:(user)=>{
+        return axios.get(`${apiUrl}/users/user/${user.id}`,{
+            user
+        })
     }
 }
 
