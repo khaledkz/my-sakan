@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const accounts=require('../../db-client/account/account')
+const CountriesJson = require('../../data/countries.json');
+const yearsJson=require('../../data/years.json')
+const monthsJson=require('../../data/month.json');
 
 router.get('/',(req,res)=>{
     let cb=(users)=>{
@@ -43,7 +46,10 @@ router.get('/update/:userID',(req,res)=>{
 
      cb=(data)=>{
         res.render('userlist-update-single-user',{
-            user:data
+            user:data,
+            yearsJson,
+            monthsJson,
+            CountriesJson
         })
     }
     
@@ -54,8 +60,20 @@ router.get('/update/:userID',(req,res)=>{
 router.post('/update/:userId',(req,res)=>{
     let {userId} = req.params;
     let query = req.body;
-    console.log(1)
 
+    let count=query.country.split(" ");
+ 
+      query.country={
+            code:count[0],
+            name:count[1]
+      }
+      
+    query.dateOfBirth={
+        day:query.day,
+        month:query.month,
+        year:query.year
+    }
+ 
      cb=()=>{
          console.log(2)
         res.redirect('/users')
@@ -63,4 +81,6 @@ router.post('/update/:userId',(req,res)=>{
     
     accounts.updateSingleUser(userId,query,cb)
 })
+
+ 
 module.exports = router;

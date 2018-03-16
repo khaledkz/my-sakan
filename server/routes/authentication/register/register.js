@@ -158,12 +158,21 @@ router.post('/login/client-side', (req, res, next) => {
 router.post('/create-account', (req, res, next) => {
 
       let query = req.body;
+       let count=query.country.split(" ");
+ 
+      query.country={
+            code:count[0],
+            name:count[1]
+      }
 
       query.dateOfBirth={
             day:query.day,
             month:query.month,
             year:query.year
       }
+
+      console.log(query);
+      
        cb = () => {
             res.redirect('/');
       }

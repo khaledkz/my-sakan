@@ -81,7 +81,7 @@
         <select class="form-control" name="country">
           <option disabled selected value> -- Select Country -- </option>
           {{#each CountriesJson}}
-          <option value={{this.code}}>{{this.name}}</option>
+          <option value="{{this.code}} {{this.name}}">{{this.name}}</option>
           {{/each}}
 
         </select>
@@ -104,7 +104,7 @@
          <select  class="form-control" name="month">
           <option disabled selected value> Month </option>
           {{#each monthsJson}}
-            <option type="number" value={{this.number}}>{{this.name}}</option>
+            <option type="number" value={{this.name}}>{{this.name}}</option>
           {{/each}}
         </select>
 

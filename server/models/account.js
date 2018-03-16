@@ -10,13 +10,16 @@ const account = new Schema({
     profileImage: String,
     coverImage: String,
     dateOfBirth: {
-        month:Number,
+        month:String,
         day:Number,
         year:Number
     },
     status: String,
     star: Number,
-    country: String,
+    country: {
+        code:String,
+        name:String
+    },
     phoneNumber:Number,
     emailAddress:String
 
