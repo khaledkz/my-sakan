@@ -8,10 +8,18 @@
                 <h4 class="text-info">Last Name</h4>
                 <h5>{{user.lastName}}</h5>
                 <h4 class="text-info">Country</h4>
-                <h5>{{user.country}}</h5>
+                <h5>{{user.country.name}}</h5>
                 <h4 class="text-info">Phone Number</h4>
                 <h5>{{user.phoneNumber}}</h5>
 
+                <h4 class="text-info">Email Address:</h4>
+                <h5>{{user.emailAddress}}</h5>
+                <h4 class="text-info">Data Of Birth</h4>
+                <h5>{{user.dateOfBirth.day}}/{{user.dateOfBirth.month}}/{{user.dateOfBirth.year}}</h5>
+                {{#if user.star}}
+                <h4 class="text-info">Star</h4>
+                <h5>{{user.star}}</h5>
+                {{/if}}
         </div>
         <div>
                 <a href="/users/update/{{user._id}}">
