@@ -7,8 +7,10 @@ const account = new Schema({
     facebookid: String,
     firstName: String,
     lastName: String,
-    profileImage: String,
-    coverImage: String,
+    image:{
+        profile:String,
+        cover:String
+    },
     dateOfBirth: {
         month:String,
         day:Number,
@@ -21,9 +23,8 @@ const account = new Schema({
         name:String
     },
     phoneNumber:Number,
-    emailAddress:String
-
-
+    emailAddress:String,
+  
 });
 
 const Account = mongoose.model('account', account);
