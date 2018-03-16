@@ -1,6 +1,6 @@
 
 const ObjectId = require('mongodb').ObjectID;
-const account = require('../../models/account')
+const account = require('../../models/account');
 const bcrypt = require('bcrypt');
  
 const accountClient={
