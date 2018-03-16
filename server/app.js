@@ -12,6 +12,7 @@ const index = require('./routes/index');
 const country= require('./routes/country/country');
 const countryApi=require('./routes/api/countries/countries');
 const flatApi =require('./routes/api/flat/flat');
+const UserAccountApi =require('./routes/api/userAccount/userAccount');
 const users= require('./routes/user/user');
 const register = require('./routes/authentication/register/register');
 const session = require("express-session");
@@ -51,6 +52,7 @@ app.use('/users',ensureAuthenticated, users);
 app.use('/flat', ensureAuthenticated,flat);
 app.use('/country',ensureAuthenticated,country);
 app.use('/api/countries',countryApi)
+app.use('/api/users',UserAccountApi)
 app.use('/api/flat',flatApi)
 app.use('/',register)
 // catch 404 and forward to error handler
