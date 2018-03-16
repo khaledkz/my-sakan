@@ -13,7 +13,9 @@ import apiClients from '../../helper/apiclient/apiClient';
         let userDetails=this.props.user.user;
         if(this.props.user.authenticate){
             console.log(userDetails);
-            //  apiClients.getUserProfile(userDetails)
+            apiClients.getUserProfile(userDetails).then((response)=>{
+                console.log(response.data)
+            })
         }
      }
 
