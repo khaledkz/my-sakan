@@ -29,6 +29,27 @@
             <input placeholder="{{user.lastName}}" class="form-control" type="text" name="lastName" id="example-text-input" value="{{user.lastName}}">
         </div>
 
+
+        <label for="example-text-input text-success " class="col-12 col-form-label">
+            <h4 class="text-primary pl-2">Profile image:</h4>
+        </label>
+
+        <div class="col-lg-6 col-md-8 col-sm-9 col-xs-9 ">
+            <input placeholder="{{user.image.profile}}" value="{{user.image.profile}}" class="form-control" type="text" name="profileImage" id="example-text-input">
+        </div>
+
+        <label for="example-text-input text-success " class="col-12 col-form-label">
+            <h4 class="text-primary pl-2">Cover Image:</h4>
+        </label>
+
+        <div class="col-lg-6 col-md-8 col-sm-9 col-xs-9 ">
+            <input placeholder="{{user.image.cover}}" class="form-control" type="text" name="coverImage" id="example-text-input" value="{{user.image.cover}}">
+        </div>
+
+        <label for="example-text-input text-success " class="col-12 col-form-label">
+            <h4 class="text-primary pl-2">Country:</h4>
+        </label>
+
         <div class="col-lg-6 col-md-8 col-sm-9 col-xs-9 ">
             <select class="form-control" name="country">
                 <option  selected value="{{user.country}}"> -- {{user.country.name}} selected -- </option>
