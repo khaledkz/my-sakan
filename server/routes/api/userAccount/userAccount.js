@@ -9,6 +9,8 @@ router.get('/:userId',(req,res,next)=>{
     const {userId} =req.params;
 
     cb = (user)=>{
+        user.password="*****";
+        user.phoneNumber="****";
         res.json(user)
     }
 

@@ -25,9 +25,7 @@ const ApiClient={
         })
     },
     getUserProfile:(user)=>{
-        return axios.get(`${apiUrl}/users/user/${user.id}`,{
-            user
-        })
+        return axios.get(`${apiUrl}/api/users/${user.id}`)
     }
 }
 
