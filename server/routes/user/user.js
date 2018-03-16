@@ -67,6 +67,11 @@ router.post('/update/:userId',(req,res)=>{
             code:count[0],
             name:count[1]
       }
+
+      query.image={
+          cover:query.coverImage,
+          profile:query.profileImage
+      }
       
     query.dateOfBirth={
         day:query.day,
