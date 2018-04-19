@@ -6,6 +6,9 @@ const ApiClient={
     GetCountries:()=>{
         return axios.get(`${apiUrl}/api/countries/all`)
     },
+    postReca:(data)=>{
+        return axios.post(`${apiUrl}/api/countries/contact`,{data})
+    },
     GetFlatCountryAndRentOrSale:(country,rentOrSale)=>{
         return axios.get(`${apiUrl}/api/flat/${country}/${rentOrSale}`)
     },

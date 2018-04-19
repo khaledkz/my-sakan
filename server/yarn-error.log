@@ -1,0 +1,57 @@
+Arguments: 
+  /usr/bin/nodejs /usr/share/yarn/bin/yarn.js
+
+PATH: 
+  /home/cyf/bin:/home/cyf/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+Yarn version: 
+  1.5.1
+
+Node version: 
+  9.10.1
+
+Platform: 
+  linux x64
+
+npm manifest: 
+  {
+    "name": "server",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+      "start": "node ./bin/www",
+      "dev": "nodemon --inspect ./bin/ww"
+    },
+    "dependencies": {
+      "bcrypt": "^2.0.0",
+      "body-parser": "~1.18.2",
+      "cookie-parser": "~1.4.3",
+      "cors": "^2.8.4",
+      "debug": "~2.6.9",
+      "express": "~4.15.5",
+      "hbs": "~4.0.1",
+      "mongoose": "^5.0.6",
+      "morgan": "~1.9.0",
+      "nodemon": "^1.15.0",
+      "passport": "^0.4.0",
+      "passport-facebook": "^2.1.1",
+      "passport-local": "^1.0.0",
+      "serve-favicon": "~2.4.5"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: Couldn't find package "require_optional@^1.0.1" required by "mongodb-core@3.0.4" on the "npm" registry.
+      at new MessageError (/usr/share/yarn/lib/cli.js:186:110)
+      at PackageRequest.<anonymous> (/usr/share/yarn/lib/cli.js:36274:17)
+      at Generator.throw (<anonymous>)
+      at step (/usr/share/yarn/lib/cli.js:98:30)
+      at /usr/share/yarn/lib/cli.js:111:13
+      at <anonymous>
+      at process._tickCallback (internal/process/next_tick.js:118:7)
